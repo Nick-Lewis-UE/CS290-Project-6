@@ -4,6 +4,11 @@ public class Piece {
     }
 
     protected String symbol;
+    protected int[] location;
+    protected AbstractBoard board;
+
+    public Piece() {
+    }
 
     public String getSymbol() {
         return symbol;
@@ -19,5 +24,9 @@ public class Piece {
 
     public boolean isEmpty() {
         return false;
+    }
+
+    protected int[] getLocation() {
+        return location;
     }
 }

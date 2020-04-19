@@ -1,7 +1,7 @@
 import static java.lang.Math.abs;
 
-public class CheckersStrategy implements moveStrategy {
-    public CheckersStrategy(AbstractPlayer p) {
+public class CheckersMoveStrategy implements moveStrategy {
+    public CheckersMoveStrategy(AbstractPlayer p) {
         this.p = p;
     }
 

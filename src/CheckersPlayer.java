@@ -4,7 +4,7 @@ public class CheckersPlayer extends AbstractPlayer {
     public CheckersPlayer(int playerNum, String name,
                         AbstractBoard board) {
         super(playerNum, name, board);
-        this.moveStrat = new CheckersStrategy(this);
+        this.moveStrat = new CheckersMoveStrategy(this);
         if (playerNum == 1) {
             this.piece = new Piece("x");
         } else {

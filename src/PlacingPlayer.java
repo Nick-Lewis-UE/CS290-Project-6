@@ -5,13 +5,13 @@ public class PlacingPlayer extends AbstractPlayer {
                          AbstractBoard board) {
         super(playerNum, name, board);
         if (playerNum == 1) {
-            this.piece = new Piece("x");
+            this.piece = new AbstractPiece("x");
         } else {
-            this.piece = new Piece("o");
+            this.piece = new AbstractPiece("o");
         }
     }
 
-    protected Piece piece;
+    protected AbstractPiece piece;
     protected int needToWin;
 
     public boolean hasWin(int[] loc) {

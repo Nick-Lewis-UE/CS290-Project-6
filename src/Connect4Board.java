@@ -8,7 +8,7 @@ public class Connect4Board extends RowBasedBoard {
         this.grid = makeStartBoard();
     }
 
-    public void takeMove(Piece p, int[] move) {
+    public void takeMove(AbstractPiece p, int[] move) {
         for (int i = num_row-1; i >= 0; i--) {
             if (grid.get(i).get(move[0]-1).isEmpty()) {
                 grid.get(i).set(move[0]-1, p);

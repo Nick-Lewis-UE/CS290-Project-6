@@ -7,11 +7,11 @@ public class Connect4MoveStrategy implements moveStrategy {
 
     @Override
     public void takeMove(int[] move) {
-        Piece placing;
+        AbstractPiece placing;
         if (p.getPlayerNum() == 1) {
-            placing = new Piece("x");
+            placing = new AbstractPiece("x");
         } else {
-            placing = new Piece("o");
+            placing = new AbstractPiece("o");
         }
 
         for (int i = p.getBoard().getNum_row() - 1; i >= 0; i--) {

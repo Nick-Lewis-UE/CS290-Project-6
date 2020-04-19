@@ -12,7 +12,7 @@ public class CheckersBoardTest extends BoardTest {
     @Test
     public void testConstructors() {
         CheckersBoard c = new CheckersBoard();
-        ArrayList<ArrayList<Piece>> b = c.makeStartBoard();
+        ArrayList<ArrayList<AbstractPiece>> b = c.makeStartBoard();
 
         testBoard(c, num_col, num_row, size, b);
     }
@@ -30,7 +30,7 @@ public class CheckersBoardTest extends BoardTest {
         p2.takeMove(new int[] {6,7,7,6});
         p1.takeMove(new int[] {2,3,4,5,6,7});
 
-        ArrayList<ArrayList<Piece>> g = c.makeStartBoard();
+        ArrayList<ArrayList<AbstractPiece>> g = c.makeStartBoard();
         g.get(2).set(1, new NullPiece());
         g.get(5).set(4, new NullPiece());
         g.get(6).set(5, new NullPiece());
@@ -59,7 +59,7 @@ public class CheckersBoardTest extends BoardTest {
 
     @Test
     public void testMakeStartBoard() {
-        ArrayList<ArrayList<Piece>> a = new ArrayList<>();
+        ArrayList<ArrayList<AbstractPiece>> a = new ArrayList<>();
         a.add(0, new ArrayList<>());
         a.add(1, new ArrayList<>());
         a.add(2, new ArrayList<>());
@@ -70,31 +70,31 @@ public class CheckersBoardTest extends BoardTest {
         a.add(7, new ArrayList<>());
 
         a.get(0).add(0, new NullPiece());
-        a.get(0).add(1, new Piece("x"));
+        a.get(0).add(1, new AbstractPiece("x"));
         a.get(0).add(2, new NullPiece());
-        a.get(0).add(3, new Piece("x"));
+        a.get(0).add(3, new AbstractPiece("x"));
         a.get(0).add(4, new NullPiece());
-        a.get(0).add(5, new Piece("x"));
+        a.get(0).add(5, new AbstractPiece("x"));
         a.get(0).add(6, new NullPiece());
-        a.get(0).add(7, new Piece("x"));
+        a.get(0).add(7, new AbstractPiece("x"));
 
-        a.get(1).add(0, new Piece("x"));
+        a.get(1).add(0, new AbstractPiece("x"));
         a.get(1).add(1, new NullPiece());
-        a.get(1).add(2, new Piece("x"));
+        a.get(1).add(2, new AbstractPiece("x"));
         a.get(1).add(3, new NullPiece());
-        a.get(1).add(4, new Piece("x"));
+        a.get(1).add(4, new AbstractPiece("x"));
         a.get(1).add(5, new NullPiece());
-        a.get(1).add(6, new Piece("x"));
+        a.get(1).add(6, new AbstractPiece("x"));
         a.get(1).add(7, new NullPiece());
 
         a.get(2).add(0, new NullPiece());
-        a.get(2).add(1, new Piece("x"));
+        a.get(2).add(1, new AbstractPiece("x"));
         a.get(2).add(2, new NullPiece());
-        a.get(2).add(3, new Piece("x"));
+        a.get(2).add(3, new AbstractPiece("x"));
         a.get(2).add(4, new NullPiece());
-        a.get(2).add(5, new Piece("x"));
+        a.get(2).add(5, new AbstractPiece("x"));
         a.get(2).add(6, new NullPiece());
-        a.get(2).add(7, new Piece("x"));
+        a.get(2).add(7, new AbstractPiece("x"));
 
         a.get(3).add(0, new NullPiece());
         a.get(3).add(1, new NullPiece());
@@ -114,31 +114,31 @@ public class CheckersBoardTest extends BoardTest {
         a.get(4).add(6, new NullPiece());
         a.get(4).add(7, new NullPiece());
 
-        a.get(5).add(0, new Piece("o"));
+        a.get(5).add(0, new AbstractPiece("o"));
         a.get(5).add(1, new NullPiece());
-        a.get(5).add(2, new Piece("o"));
+        a.get(5).add(2, new AbstractPiece("o"));
         a.get(5).add(3, new NullPiece());
-        a.get(5).add(4, new Piece("o"));
+        a.get(5).add(4, new AbstractPiece("o"));
         a.get(5).add(5, new NullPiece());
-        a.get(5).add(6, new Piece("o"));
+        a.get(5).add(6, new AbstractPiece("o"));
         a.get(5).add(7, new NullPiece());
 
         a.get(6).add(0, new NullPiece());
-        a.get(6).add(1, new Piece("o"));
+        a.get(6).add(1, new AbstractPiece("o"));
         a.get(6).add(2, new NullPiece());
-        a.get(6).add(3, new Piece("o"));
+        a.get(6).add(3, new AbstractPiece("o"));
         a.get(6).add(4, new NullPiece());
-        a.get(6).add(5, new Piece("o"));
+        a.get(6).add(5, new AbstractPiece("o"));
         a.get(6).add(6, new NullPiece());
-        a.get(6).add(7, new Piece("o"));
+        a.get(6).add(7, new AbstractPiece("o"));
 
-        a.get(7).add(0, new Piece("o"));
+        a.get(7).add(0, new AbstractPiece("o"));
         a.get(7).add(1, new NullPiece());
-        a.get(7).add(2, new Piece("o"));
+        a.get(7).add(2, new AbstractPiece("o"));
         a.get(7).add(3, new NullPiece());
-        a.get(7).add(4, new Piece("o"));
+        a.get(7).add(4, new AbstractPiece("o"));
         a.get(7).add(5, new NullPiece());
-        a.get(7).add(6, new Piece("o"));
+        a.get(7).add(6, new AbstractPiece("o"));
         a.get(7).add(7, new NullPiece());
 
         CheckersBoard c1 = new CheckersBoard();
@@ -278,7 +278,7 @@ public class CheckersBoardTest extends BoardTest {
     @Test
     public void testFindLegalMoves() {
         CheckersBoard c1 = new CheckersBoard();
-        Piece p1 = new Piece("x");
+        AbstractPiece p1 = new AbstractPiece("x");
         ArrayList<int[]> a1 = c1.findLegalMoves(p1);
         ArrayList<int[]> a2 = c1.findAllSimpleMoves(p1);
 
@@ -286,11 +286,11 @@ public class CheckersBoardTest extends BoardTest {
             Assert.assertArrayEquals(a2.get(i), a1.get(i));
         }
 
-        c1.takeMove(new Piece("x"), new int[] {1,2,2,3});
-        c1.takeMove(new Piece("o"), new int[] {4,5,3,4});
-        c1.takeMove(new Piece("o"), new int[] {0,5,1,4});
-        c1.takeMove(new Piece("x"), new int[] {7,2,6,3});
-        c1.takeMove(new Piece("o"), new int[] {6,5,5,4});
+        c1.takeMove(new AbstractPiece("x"), new int[] {1,2,2,3});
+        c1.takeMove(new AbstractPiece("o"), new int[] {4,5,3,4});
+        c1.takeMove(new AbstractPiece("o"), new int[] {0,5,1,4});
+        c1.takeMove(new AbstractPiece("x"), new int[] {7,2,6,3});
+        c1.takeMove(new AbstractPiece("o"), new int[] {6,5,5,4});
 
         ArrayList<int[]> a3 = c1.findLegalMoves(p1);
         ArrayList<int[]> a4 = c1.findAllJumps(p1);
@@ -305,7 +305,7 @@ public class CheckersBoardTest extends BoardTest {
     @Test
     public void testFindAllSimpleMoves() {
         CheckersBoard c1 = new CheckersBoard();
-        Piece p1 = new Piece("x");
+        AbstractPiece p1 = new AbstractPiece("x");
 
         ArrayList<int[]> a1 = new ArrayList<>();
         a1.add(new int[] {1,2,2,3});
@@ -328,7 +328,7 @@ public class CheckersBoardTest extends BoardTest {
     @Test
     public void testFindLocalSimpleMoves() {
         CheckersBoard c1 = new CheckersBoard();
-        Piece p1 = new Piece("x");
+        AbstractPiece p1 = new AbstractPiece("x");
 
         Assert.assertFalse(c1.findLocalSimpleMoves(new int[] {1,2}, p1).isEmpty());
 
@@ -338,8 +338,8 @@ public class CheckersBoardTest extends BoardTest {
                 c1.findLocalSimpleMoves(new int[] {1,2}, p1).get(1));
         Assert.assertTrue(c1.findLocalSimpleMoves(new int[] {7,0}, p1).isEmpty());
 
-        c1.takeMove(new Piece("o"), new int[] {4,5,3,4});
-        c1.takeMove(new Piece("o"), new int[] {3,4,2,3});
+        c1.takeMove(new AbstractPiece("o"), new int[] {4,5,3,4});
+        c1.takeMove(new AbstractPiece("o"), new int[] {3,4,2,3});
 
         Assert.assertArrayEquals(new int[] {1,2,0,3},
                 c1.findLocalSimpleMoves(new int[] {1,2}, p1).get(0));
@@ -348,15 +348,15 @@ public class CheckersBoardTest extends BoardTest {
     @Test
     public void testFindAllJumps() {
         CheckersBoard b1 = new CheckersBoard();
-        Piece p1 = new Piece("x");
+        AbstractPiece p1 = new AbstractPiece("x");
 
         Assert.assertTrue(b1.findAllJumps(p1).isEmpty());
 
-        b1.takeMove(new Piece("x"), new int[] {1,2,2,3});
-        b1.takeMove(new Piece("o"), new int[] {4,5,3,4});
-        b1.takeMove(new Piece("o"), new int[] {0,5,1,4});
-        b1.takeMove(new Piece("x"), new int[] {7,2,6,3});
-        b1.takeMove(new Piece("o"), new int[] {6,5,5,4});
+        b1.takeMove(new AbstractPiece("x"), new int[] {1,2,2,3});
+        b1.takeMove(new AbstractPiece("o"), new int[] {4,5,3,4});
+        b1.takeMove(new AbstractPiece("o"), new int[] {0,5,1,4});
+        b1.takeMove(new AbstractPiece("x"), new int[] {7,2,6,3});
+        b1.takeMove(new AbstractPiece("o"), new int[] {6,5,5,4});
 
         ArrayList<int[]> a = new ArrayList<>();
         a.add(new int[] {2,3,4,5});
@@ -370,10 +370,10 @@ public class CheckersBoardTest extends BoardTest {
     @Test
     public void testFindLocalJumps() {
         CheckersBoard c1 = new CheckersBoard();
-        Piece p1 = new Piece ("x");
+        AbstractPiece p1 = new AbstractPiece("x");
 
-        c1.takeMove(new Piece("x"), new int[] {1,2,2,3});
-        c1.takeMove(new Piece("o"), new int[] {4,5,3,4});
+        c1.takeMove(new AbstractPiece("x"), new int[] {1,2,2,3});
+        c1.takeMove(new AbstractPiece("o"), new int[] {4,5,3,4});
         int[] me = new int[] {2,3};
 
         ArrayList<int[]> a = new ArrayList<>();
@@ -381,7 +381,7 @@ public class CheckersBoardTest extends BoardTest {
 
         Assert.assertArrayEquals(a.get(0), c1.findLocalJumps(me, p1).get(0));
 
-        c1.takeMove(new Piece("o"), new int[] {0,5,1,4});
+        c1.takeMove(new AbstractPiece("o"), new int[] {0,5,1,4});
         a.add(new int[] {2,3,0,5});
         Assert.assertArrayEquals(a.get(0), c1.findLocalJumps(me, p1).get(0));
         Assert.assertArrayEquals(a.get(1), c1.findLocalJumps(me, p1).get(1));
@@ -390,9 +390,9 @@ public class CheckersBoardTest extends BoardTest {
     @Test
     public void testFindLocalJumps_multipleJumps() {
         CheckersBoard c1 = new CheckersBoard();
-        Piece p1 = new Piece("x");
+        AbstractPiece p1 = new AbstractPiece("x");
         CheckersPlayer p = new CheckersPlayer(1, "Nick", c1);
-        Piece oPiece = new Piece("o");
+        AbstractPiece oPiece = new AbstractPiece("o");
 
         c1.takeMove(p1, new int[] {1,2,2,3});
         c1.takeMove(oPiece, new int[] {4,5,3,4});

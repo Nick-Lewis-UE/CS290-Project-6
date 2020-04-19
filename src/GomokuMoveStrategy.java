@@ -9,11 +9,11 @@ public class GomokuMoveStrategy implements moveStrategy {
 
     @Override
     public void takeMove(int[] move) {
-        Piece placing;
+        AbstractPiece placing;
         if (p.getPlayerNum() == 1) {
-            placing = new Piece("x");
+            placing = new AbstractPiece("x");
         } else {
-            placing = new Piece("o");
+            placing = new AbstractPiece("o");
         }
 
         p.getBoard().getGrid().get(move[1]-1).set(move[0]-1, placing);

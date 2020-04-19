@@ -1,34 +1,38 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.stream.Stream;
 
 import static java.lang.Math.abs;
 
 public class CheckersBoard extends AbstractBoard {
 
-    public CheckersBoard() {
+    public CheckersBoard(AbstractGame game) {
         this.num_col = 8;
         this.num_row = 8;
         this.size = 64;
-        this.grid = makeStartBoard();
+        this.grid = makeStartBoard(game);
     }
 
     @Override
-    public void takeMove(Piece p, int[] move) {
-        Piece moved = grid.get(move[1]).get(move[0]);
+    public void takeMove(AbstractPiece p, int[] move) {
+        AbstractPiece moved = grid.get(move[1]).get(move[0]);
 
         for (int i = 3; i < move.length; i = i + 2) {
             grid.get(move[i]).set(move[i - 1], moved);
-            grid.get(move[i - 2]).set(move[i - 3], new NullPiece());
+            grid.get(move[i - 2]).set(move[i - 3],
+                    new NullPiece(this, new int[] {move[i - 3], move[i - 2]}));
 
             if (isJumpMove(move)) {
                 grid.get((move[i]+ move[i-2])/2).set((move[i-1]+move[i-3])/2,
-                        new NullPiece());
+                        new NullPiece(this,
+                                new int[] {(move[i-1]+move[i-3])/2, (move[i]+ move[i-2])/2}));
             }
         }
 
         if (kingMe(move, p)) {
             grid.get(move[move.length - 1]).set(move[move.length - 2],
-                    new Piece(moved.getSymbol().toUpperCase()));
+                    new CheckersKingPiece(moved.getSymbol().toUpperCase(), this,
+                            new int[] {move[move.length - 2], move[move.length - 1]}, p.getPlayer()));
         }
     }
 
@@ -53,20 +57,22 @@ public class CheckersBoard extends AbstractBoard {
     }
 
     @Override
-    protected ArrayList<ArrayList<Piece>> makeStartBoard() {
-        ArrayList<ArrayList<Piece>> a = new ArrayList<>();
+    protected ArrayList<ArrayList<AbstractPiece>> makeStartBoard(AbstractGame game) {
+        ArrayList<ArrayList<AbstractPiece>> a = new ArrayList<>();
 
         for(int i = 0; i < num_row; i++) {
             a.add(i, new ArrayList<>());
             for (int j = 0; j < num_col; j++) {
                 if (((i == 0 || i == 2) && j % 2 != 0) ||
                         (i == 1 && j % 2 == 0))
-                    a.get(i).add(j, new CheckersPiece("x"));
+                    a.get(i).add(j, new CheckersPiece("x", this,
+                            new int[] {j,i}, game.getP1()));
                 else if (((i == 5 || i == 7) && j % 2 == 0) ||
                         (i == 6 && j % 2 != 0))
-                    a.get(i).add(j, new CheckersPiece("o"));
+                    a.get(i).add(j, new CheckersPiece("o", this,
+                            new int[] {j,i}, game.getP2()));
                 else
-                    a.get(i).add(j, new NullPiece());
+                    a.get(i).add(j, new NullPiece(this, new int[] {i,j}));
             }
         }
 
@@ -88,24 +94,23 @@ public class CheckersBoard extends AbstractBoard {
 
     @Override
     public boolean validMove(int[] move, AbstractPlayer p) {
-//        ArrayList<int[]> moves = findLegalMoves(p.getPiece());
-//
-//        for (int[] each : moves) {
-//            if (Arrays.equals(each, move))
-//                return true;
-//        }
-//
-//        return false;
-        return true;
+        ArrayList<int[]> moves = findLegalMoves(p);
+
+        for (int[] each : moves) {
+            if (Arrays.equals(each, move))
+                return true;
+        }
+
+        return false;
     }
 
     @Override
     public boolean hasTie() {
-        return findLegalMoves(new Piece("x")).isEmpty() &&
-                findLegalMoves(new Piece("o")).isEmpty();
+        return findLegalMoves(game.getP1()).isEmpty() &&
+                findLegalMoves(game.getP2()).isEmpty();
     }
 
-    protected boolean kingMe(int[] move, Piece p) {
+    protected boolean kingMe(int[] move, AbstractPiece p) {
         int kingRow;
 
         if (p.equals("x")) {
@@ -129,18 +134,27 @@ public class CheckersBoard extends AbstractBoard {
         return jumped;
     }
 
-    protected ArrayList<int[]> findLegalMoves(Piece p) {
-        ArrayList<int[]> legalMoves;
+    protected ArrayList<int[]> findLegalMoves(AbstractPlayer player) {
+        ArrayList<int[]> legalMoves = new ArrayList<>();
 
-        legalMoves = findAllJumps(p);
-
-        if (legalMoves.isEmpty()) {
-            legalMoves = findAllSimpleMoves(p);
+        for (int r = 0; r <(getGrid()).size(); r++) {
+            for (int c = 0; c <(getGrid()).get(r).size(); c++) {
+                if (getGrid().get(r).get(c).getPlayer().getPlayerNum() == player.getPlayerNum()) {
+                    legalMoves.addAll(getGrid().get(r).get(c).generateMoves());
+                }
+            }
         }
-        return legalMoves;
+
+        ArrayList<int[]> allMoves = new ArrayList<>();
+        if (legalMoves.stream().anyMatch(this::isJumpMove)) {
+            legalMoves.stream().filter(this::isJumpMove).forEach(allMoves::add);
+        } else {
+            legalMoves.stream().filter(each -> !isJumpMove(each)).forEach(allMoves::add);
+        }
+        return allMoves;
     }
 
-    protected ArrayList<int[]> findAllSimpleMoves(Piece p) {
+    protected ArrayList<int[]> findAllSimpleMoves(AbstractPiece p) {
         ArrayList<int[]> a = new ArrayList<>();
 
         for (int r = 0; r <(getGrid()).size(); r++) {
@@ -155,7 +169,7 @@ public class CheckersBoard extends AbstractBoard {
         return a;
     }
 
-    protected ArrayList<int[]> findLocalSimpleMoves(int[] me, Piece p) {
+    protected ArrayList<int[]> findLocalSimpleMoves(int[] me, AbstractPiece p) {
         int[] rowAdds;
         int[] colAdds = new int[] {1,-1};
         ArrayList<int[]> allMoves = new ArrayList<>();
@@ -171,7 +185,7 @@ public class CheckersBoard extends AbstractBoard {
 
         for (int i = 0; i < 2; i++) {
             try {
-                Piece nextPiece = getGrid().get(me[1] + rowAdds[i]).get(me[0] + colAdds[i]);
+                AbstractPiece nextPiece = getGrid().get(me[1] + rowAdds[i]).get(me[0] + colAdds[i]);
 
                 if (nextPiece.isEmpty()) {
                     int[] newMe = appendMoveArray(me,
@@ -185,7 +199,7 @@ public class CheckersBoard extends AbstractBoard {
         return allMoves;
     }
 
-    protected ArrayList<int[]> findAllJumps(Piece p) {
+    protected ArrayList<int[]> findAllJumps(AbstractPiece p) {
         ArrayList<int[]> a = new ArrayList<>();
 
         for (int r = 0; r <(getGrid()).size(); r++) {
@@ -200,7 +214,7 @@ public class CheckersBoard extends AbstractBoard {
         return a;
     }
 
-    protected ArrayList<int[]> findLocalJumps (int[] me, Piece p) {
+    protected ArrayList<int[]> findLocalJumps (int[] me, AbstractPiece p) {
         int[] rowAdds;
         int[] colAdds = new int[] {1,-1};
         boolean moreJumps = false;
@@ -217,7 +231,7 @@ public class CheckersBoard extends AbstractBoard {
 
         for (int i = 0; i < 2; i++) {
             try {
-                Piece nextPiece = getGrid().get(me[me.length-1] + rowAdds[i]).
+                AbstractPiece nextPiece = getGrid().get(me[me.length-1] + rowAdds[i]).
                         get(me[me.length-2] + colAdds[i]);
 
                 if (!nextPiece.isEmpty() &&
@@ -244,7 +258,6 @@ public class CheckersBoard extends AbstractBoard {
         int[] combined = new int[soFar.length + upNext.length];
 
         System.arraycopy(soFar, 0, combined, 0, soFar.length);
-
         System.arraycopy(upNext, 0, combined, soFar.length, upNext.length);
 
         return combined;

@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class CheckersGame extends AbstractGame {
 
     public CheckersGame() {
-        this.setBoard(new CheckersBoard());
+        this.setBoard(new CheckersBoard(this));
         this.setP1(new CheckersPlayer(1, "Player 1", this.board));
         this.setP2(new CheckersPlayer(2, "Player 2", this.board));
         this.turn = this.p1;

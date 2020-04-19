@@ -4,7 +4,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 
 public class BoardTest {
-    protected void testBoard(AbstractBoard b, ArrayList<ArrayList<Piece>> grid) {
+    protected void testBoard(AbstractBoard b, ArrayList<ArrayList<AbstractPiece>> grid) {
 //        System.out.println("Grid Size: " + grid.size());
         for (int i = 0; i < b.getNum_row(); i++) {
 //            System.out.println(b.getGrid().get(i).getSymbol());
@@ -16,7 +16,7 @@ public class BoardTest {
     }
 
     protected void testBoard(AbstractBoard b, int num_col, int num_row, int size,
-                             ArrayList<ArrayList<Piece>> grid) {
+                             ArrayList<ArrayList<AbstractPiece>> grid) {
 //        System.out.println("Grid Size: " + grid.size());
         for (int i = 0; i < b.getNum_row(); i++) {
 //            System.out.println(b.getGrid().get(i).getSymbol());
@@ -32,8 +32,8 @@ public class BoardTest {
     }
 
 
-    public ArrayList<ArrayList<Piece>> makeEmptyBoard(int rows, int cols) {
-        ArrayList<ArrayList<Piece>> a= new ArrayList();
+    public ArrayList<ArrayList<AbstractPiece>> makeEmptyBoard(int rows, int cols) {
+        ArrayList<ArrayList<AbstractPiece>> a= new ArrayList();
         for (int i = 0; i < rows; i++) {
             a.add(i, new ArrayList<>());
             for (int j = 0; j < cols; j++) {
@@ -79,26 +79,26 @@ public class BoardTest {
     public void testaddPiece() {
         // Gomoku
         GomokuBoard g1 = new GomokuBoard();
-        Piece p1 = new Piece("x");
+        AbstractPiece p1 = new AbstractPiece("x");
         int[] loc1 = new int[2];
         loc1[0] = loc1[1] = 5;
         g1.takeMove(p1, loc1);
 
-        ArrayList<ArrayList<Piece>> a1 = makeEmptyBoard(19,19);
+        ArrayList<ArrayList<AbstractPiece>> a1 = makeEmptyBoard(19,19);
         a1.get(4).set(4, p1);
         testBoard(g1, a1);
 
         //Connect4
         Connect4Board c1 = new Connect4Board();
-        Piece p2 = new Piece("o");
-        Piece p3 = new Piece("x");
+        AbstractPiece p2 = new AbstractPiece("o");
+        AbstractPiece p3 = new AbstractPiece("x");
         int[] loc2 = new int[1];
         int[] loc3 = new int[1];
         loc2[0] = 3;
         loc3[0] = 5;
         c1.takeMove(p2, loc2);
         c1.takeMove(p3, loc3);
-        ArrayList<ArrayList<Piece>> a2 = makeEmptyBoard(6,7);
+        ArrayList<ArrayList<AbstractPiece>> a2 = makeEmptyBoard(6,7);
         a2.get(5).set(2, p2);
         a2.get(5).set(4, p3);
         testBoard(c1, a2);
@@ -113,7 +113,7 @@ public class BoardTest {
     @Test(expected = IndexOutOfBoundsException.class)
     public void testIllegalAddPiece() {
         GomokuBoard g1 = new GomokuBoard();
-        Piece p1 = new Piece("x");
+        AbstractPiece p1 = new AbstractPiece("x");
         g1.takeMove(p1, makeLoc(300, 300));
         g1.takeMove(p1, makeLoc(-20, -1));
 

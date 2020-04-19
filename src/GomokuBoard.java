@@ -11,7 +11,7 @@ public class GomokuBoard extends RowBasedBoard {
         this.num_row = 19;
         this.size = 361;
         this.needToWin = 5;
-        ArrayList<ArrayList<Piece>> grid = new ArrayList<>();
+        ArrayList<ArrayList<AbstractPiece>> grid = new ArrayList<>();
         for (int i = 0; i < num_row; i++) {
             grid.add(i, new ArrayList<>());
             for (int j = 0; j < num_col; j++) {
@@ -21,7 +21,7 @@ public class GomokuBoard extends RowBasedBoard {
         this.grid = grid;
     }
 
-    public void takeMove(Piece p, int[] move) {
+    public void takeMove(AbstractPiece p, int[] move) {
             grid.get(move[1]-1).set(move[0]-1, p);
     }
 

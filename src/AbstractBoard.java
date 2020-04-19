@@ -2,10 +2,11 @@ import java.util.ArrayList;
 
 public abstract class AbstractBoard {
     // outer list is rows, inner list is columns
-    protected ArrayList<ArrayList<Piece>> grid;
+    protected ArrayList<ArrayList<AbstractPiece>> grid;
     protected int size;
     protected int num_col;
     protected int num_row;
+    protected AbstractGame game;
 
     public AbstractBoard() {}
 
@@ -21,15 +22,15 @@ public abstract class AbstractBoard {
         return num_col;
     }
 
-    public ArrayList<ArrayList<Piece>> getGrid() {
+    public ArrayList<ArrayList<AbstractPiece>> getGrid() {
         return grid;
     }
 
-    public abstract void takeMove(Piece p, int[] move);
+    public abstract void takeMove(AbstractPiece p, int[] move);
 
     public abstract String toString();
 
-    protected abstract ArrayList<ArrayList<Piece>> makeStartBoard();
+    protected abstract ArrayList<ArrayList<AbstractPiece>> makeStartBoard(AbstractGame game);
 
 //    public abstract boolean hasWin(AbstractPlayer p, int[] loc);
 

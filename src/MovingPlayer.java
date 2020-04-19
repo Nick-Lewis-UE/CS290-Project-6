@@ -5,17 +5,17 @@ public class MovingPlayer extends AbstractPlayer {
                          AbstractBoard board) {
         super(playerNum, name, board);
         if (playerNum == 1) {
-            this.piece = new Piece("x");
+            this.piece = new AbstractPiece("x");
         } else {
-            this.piece = new Piece("o");
+            this.piece = new AbstractPiece("o");
         }
     }
 
-    protected Piece piece;
+    protected AbstractPiece piece;
 
     public boolean hasWin(int[] loc) {
-        for (ArrayList<Piece> eachRow : board.getGrid()) {
-            for (Piece eachPiece : eachRow) {
+        for (ArrayList<AbstractPiece> eachRow : board.getGrid()) {
+            for (AbstractPiece eachPiece : eachRow) {
                 if (!eachPiece.equals(piece) &&
                         !eachPiece.isEmpty())
                     return false;

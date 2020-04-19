@@ -79,8 +79,8 @@ public abstract class RowBasedBoard extends AbstractBoard {
 //        return false;
 //    }
 
-    public ArrayList<ArrayList<Piece>> makeStartBoard() {
-        ArrayList<ArrayList<Piece>> a= new ArrayList<>();
+    public ArrayList<ArrayList<AbstractPiece>> makeStartBoard(AbstractGame game) {
+        ArrayList<ArrayList<AbstractPiece>> a= new ArrayList<>();
         for (int i = 0; i < num_row; i++) {
             a.add(i, new ArrayList<>());
             for (int j = 0; j < num_col; j++) {

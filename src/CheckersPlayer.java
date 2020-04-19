@@ -6,17 +6,17 @@ public class CheckersPlayer extends AbstractPlayer {
         super(playerNum, name, board);
         this.moveStrat = new CheckersMoveStrategy(this);
         if (playerNum == 1) {
-            this.piece = new Piece("x");
+            this.piece = new CheckersPiece("x", getBoard(), new int[0], this);
         } else {
-            this.piece = new Piece("o");
+            this.piece = new CheckersPiece("o", getBoard(), new int[0], this);
         }
     }
 
-    protected Piece piece;
+    protected AbstractPiece piece;
 
     public boolean hasWin(int[] loc) {
-        for (ArrayList<Piece> eachRow : board.getGrid()) {
-            for (Piece eachPiece : eachRow) {
+        for (ArrayList<AbstractPiece> eachRow : board.getGrid()) {
+            for (AbstractPiece eachPiece : eachRow) {
                 if (!eachPiece.equals(piece) &&
                         !eachPiece.isEmpty())
                     return false;

@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 import static java.lang.Math.min;
 
 public class PlacingPlayer extends AbstractPlayer {
@@ -11,7 +9,6 @@ public class PlacingPlayer extends AbstractPlayer {
         } else {
             this.piece = new Piece("o");
         }
-        this.moveStrat = new PlaceStrategy(this);
     }
 
     protected Piece piece;

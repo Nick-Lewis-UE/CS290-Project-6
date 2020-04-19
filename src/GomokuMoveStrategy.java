@@ -1,6 +1,6 @@
-public class PlaceStrategy implements moveStrategy {
+public class GomokuMoveStrategy implements moveStrategy {
 
-    public PlaceStrategy(AbstractPlayer p) {
+    public GomokuMoveStrategy(AbstractPlayer p) {
         this.p = p;
     }
 

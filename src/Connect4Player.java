@@ -3,5 +3,6 @@ public class Connect4Player extends PlacingPlayer{
                         AbstractBoard board) {
         super(playerNum, name, board);
         this.needToWin = 4;
+        this.moveStrat = new Connect4MoveStrategy(this);
     }
 }

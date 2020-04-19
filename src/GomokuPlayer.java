@@ -3,5 +3,6 @@ public class GomokuPlayer extends PlacingPlayer {
                          AbstractBoard board) {
         super(playerNum, name, board);
         this.needToWin = 5;
+        this.moveStrat = new GomokuMoveStrategy(this);
     }
 }

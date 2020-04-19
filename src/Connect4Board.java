@@ -34,7 +34,7 @@ public class Connect4Board extends RowBasedBoard {
         return board;
     }
 
-    public boolean hasWin(Player p, int[] loc) {
+    public boolean hasWin(AbstractPlayer p, int[] loc) {
         // not working
         for (int j = 1; j <= num_row; j++) {
             if (checkHorizontalWin(p, j))
@@ -58,7 +58,7 @@ public class Connect4Board extends RowBasedBoard {
         return false;
     }
 
-    public boolean validMove(int[] move, Player p) {
+    public boolean validMove(int[] move, AbstractPlayer p) {
         return (move[0] <= 0 || move[0] > num_col ||
                 !grid.get(0).get(move[0] - 1).isEmpty());
     }

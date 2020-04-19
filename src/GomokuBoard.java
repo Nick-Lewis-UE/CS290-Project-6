@@ -55,12 +55,12 @@ public class GomokuBoard extends RowBasedBoard {
         return board.toString();
     }
 
-    public boolean hasWin(Player p, int[] loc) {
+    public boolean hasWin(AbstractPlayer p, int[] loc) {
         return (checkHorizontalWin(p, loc[1]) || checkVerticalWin(p, loc[0]) ||
                 checkDescDiagonalWin(p, loc[0], loc[1]) || checkAscDiagonalWin(p, loc[0], loc[1]));
     }
 
-    public boolean validMove(int[] move, Player p) {
+    public boolean validMove(int[] move, AbstractPlayer p) {
         return (move[1] > num_row || move[1] <= 0 || move[0] <= 0 || move[0] > num_col ||
                 !grid.get(move[1] - 1).get(move[0] - 1).isEmpty());
     }

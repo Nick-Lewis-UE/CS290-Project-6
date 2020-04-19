@@ -148,8 +148,8 @@ public class CheckersBoardTest extends BoardTest {
     @Test
     public void testHasWin() {
         CheckersBoard c1 = new CheckersBoard();
-        Player p1 = new Player("x", "Nick");
-        Player p2 = new Player("o", "Not Nick");
+        AbstractPlayer p1 = new AbstractPlayer("x", "Nick");
+        AbstractPlayer p2 = new AbstractPlayer("o", "Not Nick");
 
         for (int i = 0; i < c1.getGrid().size(); i++) {
             for (int j = 0; j < c1.getGrid().get(0).size(); j++) {
@@ -166,7 +166,7 @@ public class CheckersBoardTest extends BoardTest {
     @Test
     public void testValidMove() {
         CheckersBoard c1 = new CheckersBoard();
-        Player p1 = new Player("x", "player");
+        AbstractPlayer p1 = new AbstractPlayer("x", "player");
 
         // valid move
         int[] move1 = new int[] {1,2,2,3};
@@ -391,7 +391,7 @@ public class CheckersBoardTest extends BoardTest {
     public void testFindLocalJumps_multipleJumps() {
         CheckersBoard c1 = new CheckersBoard();
         Piece p1 = new Piece("x");
-        Player p = new Player("x", "Nick");
+        AbstractPlayer p = new AbstractPlayer("x", "Nick");
         Piece oPiece = new Piece("o");
 
         c1.takeMove(p1, new int[] {1,2,2,3});

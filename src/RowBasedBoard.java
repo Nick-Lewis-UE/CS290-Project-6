@@ -5,7 +5,7 @@ import static java.lang.Math.min;
 public abstract class RowBasedBoard extends AbstractBoard {
     protected int needToWin;
 
-    public boolean checkHorizontalWin(Player p, int row) {
+    public boolean checkHorizontalWin(AbstractPlayer p, int row) {
         int run = 0;
         for (int i = 0; i < num_col; i++) {
             if (grid.get(row-1).get(i).equals(p.getPiece()))
@@ -19,7 +19,7 @@ public abstract class RowBasedBoard extends AbstractBoard {
         return false;
     }
 
-    public boolean checkVerticalWin(Player p, int col) {
+    public boolean checkVerticalWin(AbstractPlayer p, int col) {
         int run = 0;
         for (int i = 0; i < num_row; i++) {
             if(grid.get(i).get(col-1).equals(p.getPiece()))
@@ -33,7 +33,7 @@ public abstract class RowBasedBoard extends AbstractBoard {
         return false;
     }
 
-    public boolean checkDescDiagonalWin(Player p, int col, int row) {
+    public boolean checkDescDiagonalWin(AbstractPlayer p, int col, int row) {
         int run = 0;
         int smaller = min(row, col);
         int r = row-smaller;
@@ -54,7 +54,7 @@ public abstract class RowBasedBoard extends AbstractBoard {
         return false;
     }
 
-    public boolean checkAscDiagonalWin(Player p, int col, int row) {
+    public boolean checkAscDiagonalWin(AbstractPlayer p, int col, int row) {
         int run = 0;
 
         int r = row-1;

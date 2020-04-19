@@ -126,7 +126,7 @@ public class BoardTest {
     public void testJustWon() {
         GomokuBoard g1 = new GomokuBoard();
         Piece p1 = new Piece("x");
-        Player player1 = new Player("x", "nick");
+        AbstractPlayer player1 = new AbstractPlayer("x", "nick");
 
         g1.takeMove(p1,makeLoc(1,1));
         g1.takeMove(p1,makeLoc(1,2));

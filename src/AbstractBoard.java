@@ -31,9 +31,9 @@ public abstract class AbstractBoard {
 
     protected abstract ArrayList<ArrayList<Piece>> makeStartBoard();
 
-    public abstract boolean hasWin(Player p, int[] loc);
+    public abstract boolean hasWin(AbstractPlayer p, int[] loc);
 
-    public abstract boolean validMove(int[] move, Player p);
+    public abstract boolean validMove(int[] move, AbstractPlayer p);
 
     public abstract boolean hasTie();
 }

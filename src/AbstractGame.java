@@ -4,9 +4,9 @@ public abstract class AbstractGame {
     }
 
     protected AbstractBoard board;
-    protected Player p1;
-    protected Player p2;
-    protected Player turn;
+    protected AbstractPlayer p1;
+    protected AbstractPlayer p2;
+    protected AbstractPlayer turn;
 
     public void play() {
         String endMessage;
@@ -18,9 +18,9 @@ public abstract class AbstractGame {
             System.out.println(turn.getName() + "'s turn!");
 
             move = scanForMove();
-            this.board.takeMove(turn.getPiece(), move);
+            turn.takeMove(move);
             System.out.println(this.board.toString());
-            if (board.hasWin(turn, move)) {
+            if (turn.hasWin(move)) {
                 endMessage = turn.getWinMessage();
                 break;
             }
@@ -50,19 +50,19 @@ public abstract class AbstractGame {
         this.board = board;
     }
 
-    public Player getP1() {
+    public AbstractPlayer getP1() {
         return p1;
     }
 
-    public void setP1(Player p1) {
+    public void setP1(AbstractPlayer p1) {
         this.p1 = p1;
     }
 
-    public Player getP2() {
+    public AbstractPlayer getP2() {
         return p2;
     }
 
-    public void setP2(Player p2) {
+    public void setP2(AbstractPlayer p2) {
         this.p2 = p2;
     }
 }

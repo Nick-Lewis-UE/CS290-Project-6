@@ -4,7 +4,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 
 public class GameTest {
-    private void testGame(AbstractGame g, AbstractBoard b, Player p1, Player p2) {
+    private void testGame(AbstractGame g, AbstractBoard b, AbstractPlayer p1, AbstractPlayer p2) {
         ArrayList<ArrayList<Piece>> grid = b.makeStartBoard();
         Assert.assertEquals(grid.size()*grid.get(0).size(), b.getSize());
         for (int i = 0; i < b.getNum_row(); i++) {
@@ -24,8 +24,8 @@ public class GameTest {
         // Gomoku
         GomokuGame g1 = new GomokuGame();
         AbstractBoard b1 = new GomokuBoard();
-        Player p1 = new Player("x", "Player 1");
-        Player p2 = new Player("o", "Player 2");
+        AbstractPlayer p1 = new AbstractPlayer("x", "Player 1");
+        AbstractPlayer p2 = new AbstractPlayer("o", "Player 2");
 
         testGame(g1, b1, p1, p2);
 

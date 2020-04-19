@@ -73,8 +73,8 @@ public class CheckersBoard extends AbstractBoard {
         return a;
     }
 
-    @Override
-    public boolean hasWin(AbstractPlayer p, int[] loc) {
+//    @Override
+//    public boolean hasWin(AbstractPlayer p, int[] loc) {
 //        for (ArrayList<Piece> eachRow : grid) {
 //            for (Piece eachPiece : eachRow) {
 //                if (!eachPiece.equals(p.getPiece()) &&
@@ -84,20 +84,19 @@ public class CheckersBoard extends AbstractBoard {
 //        }
 //
 //        return true;
-
-        return false;
-    }
+//    }
 
     @Override
     public boolean validMove(int[] move, AbstractPlayer p) {
-        ArrayList<int[]> moves = findLegalMoves(p.getPiece());
-
-        for (int[] each : moves) {
-            if (Arrays.equals(each, move))
-                return true;
-        }
-
-        return false;
+//        ArrayList<int[]> moves = findLegalMoves(p.getPiece());
+//
+//        for (int[] each : moves) {
+//            if (Arrays.equals(each, move))
+//                return true;
+//        }
+//
+//        return false;
+        return true;
     }
 
     @Override

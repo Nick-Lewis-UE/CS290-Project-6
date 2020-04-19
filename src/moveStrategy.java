@@ -1,3 +1,3 @@
 public interface moveStrategy {
-    public void takeMove();
+    void takeMove(int[] move);
 }

@@ -1,9 +1,10 @@
 import java.util.ArrayList;
 
-public class MovingPlayer extends AbstractPlayer {
-    public MovingPlayer(int playerNum, String name,
-                         AbstractBoard board) {
+public class CheckersPlayer extends AbstractPlayer {
+    public CheckersPlayer(int playerNum, String name,
+                        AbstractBoard board) {
         super(playerNum, name, board);
+        this.moveStrat = new CheckersStrategy(this);
         if (playerNum == 1) {
             this.piece = new Piece("x");
         } else {

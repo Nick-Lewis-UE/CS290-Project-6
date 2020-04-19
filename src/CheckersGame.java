@@ -4,10 +4,9 @@ public class CheckersGame extends AbstractGame {
 
     public CheckersGame() {
         this.setBoard(new CheckersBoard());
-        this.setP1(new AbstractPlayer("x", "Player 1"));
-        this.setP2(new AbstractPlayer("o", "Player 2"));
+        this.setP1(new CheckersPlayer(1, "Player 1", this.board));
+        this.setP2(new CheckersPlayer(2, "Player 2", this.board));
         this.turn = this.p1;
-//        this.setJumps(new MovesList());
     }
 
 

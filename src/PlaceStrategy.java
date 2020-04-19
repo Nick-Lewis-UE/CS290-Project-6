@@ -1,17 +1,14 @@
 public class PlaceStrategy implements moveStrategy {
 
-    public PlaceStrategy(AbstractPlayer p, int[] move, AbstractBoard b) {
+    public PlaceStrategy(AbstractPlayer p) {
         this.p = p;
-        this.move = move;
-        this.b = b;
     }
 
     protected AbstractPlayer p;
-    protected int[] move;
     protected AbstractBoard b;
 
     @Override
-    public void takeMove() {
+    public void takeMove(int[] move) {
         Piece placing;
         if (p.getPlayerNum() == 1) {
             placing = new Piece("x");
@@ -19,6 +16,6 @@ public class PlaceStrategy implements moveStrategy {
             placing = new Piece("o");
         }
 
-        b.getGrid().get(move[1]-1).set(move[0]-1, placing);
+        p.getBoard().getGrid().get(move[1]-1).set(move[0]-1, placing);
     }
 }

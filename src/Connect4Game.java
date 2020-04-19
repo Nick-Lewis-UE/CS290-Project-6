@@ -4,8 +4,8 @@ public class Connect4Game extends AbstractGame{
 
     public Connect4Game() {
         this.setBoard(new Connect4Board());
-        this.setP1(new AbstractPlayer("x", "Player 1"));
-        this.setP2(new AbstractPlayer("o", "Player 2"));
+        this.setP1(new Connect4Player(1, "Player 1", this.board));
+        this.setP2(new Connect4Player(2, "Player 2", this.board));
     }
 
     public int[] scanForMove() {

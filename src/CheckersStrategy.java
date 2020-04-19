@@ -1,32 +1,28 @@
 import static java.lang.Math.abs;
 
 public class CheckersStrategy implements moveStrategy {
-    public CheckersStrategy(AbstractPlayer p, int[] move, AbstractBoard b) {
+    public CheckersStrategy(AbstractPlayer p) {
         this.p = p;
-        this.move = move;
-        this.b = b;
     }
 
     protected AbstractPlayer p;
-    protected int[] move;
-    protected AbstractBoard b;
 
     @Override
-    public void takeMove() {
-        Piece moved = b.getGrid().get(move[1]).get(move[0]);
+    public void takeMove(int[] move) {
+        Piece moved = p.getBoard().getGrid().get(move[1]).get(move[0]);
 
         for (int i = 3; i < move.length; i = i + 2) {
-            b.getGrid().get(move[i]).set(move[i - 1], moved);
-            b.getGrid().get(move[i - 2]).set(move[i - 3], new NullPiece());
+            p.getBoard().getGrid().get(move[i]).set(move[i - 1], moved);
+            p.getBoard().getGrid().get(move[i - 2]).set(move[i - 3], new NullPiece());
 
             if (isJumpMove(move)) {
-                b.getGrid().get((move[i]+ move[i-2])/2).set((move[i-1]+move[i-3])/2,
+                p.getBoard().getGrid().get((move[i]+ move[i-2])/2).set((move[i-1]+move[i-3])/2,
                         new NullPiece());
             }
         }
 
         if (kingMe(move, moved)) {
-            b.getGrid().get(move[move.length - 1]).set(move[move.length - 2],
+            p.getBoard().getGrid().get(move[move.length - 1]).set(move[move.length - 2],
                     new Piece(moved.getSymbol().toUpperCase()));
         }
     }

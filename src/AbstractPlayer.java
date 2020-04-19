@@ -2,12 +2,11 @@ import java.util.ArrayList;
 
 public abstract class AbstractPlayer {
 
-    public AbstractPlayer(int playerNum, String name, moveStrategy moveStrat,
+    public AbstractPlayer(int playerNum, String name,
                           AbstractBoard board) {
         this.playerNum = playerNum;
         this.name = name;
         this.winMessage = "Congratulations, " + name + "! You won!";
-        this.moveStrat = moveStrat;
         this.board = board;
     }
 
@@ -29,8 +28,12 @@ public abstract class AbstractPlayer {
         return playerNum;
     }
 
+    public AbstractBoard getBoard() {
+        return board;
+    }
+
     public void takeMove(int[] move) {
-        moveStrat.takeMove();
+        moveStrat.takeMove(move);
     }
 
     public abstract boolean hasWin(int[] loc);

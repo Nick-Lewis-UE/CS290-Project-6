@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 public abstract class AbstractPlayer {
 
     public AbstractPlayer(int playerNum, String name,
@@ -32,6 +30,10 @@ public abstract class AbstractPlayer {
 
     public int getPlayerNum() {
         return playerNum;
+    }
+
+    public moveStrategy getMoveStrat() {
+        return moveStrat;
     }
 
     public AbstractBoard getBoard() {

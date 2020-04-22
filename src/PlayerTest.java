@@ -1,21 +1,43 @@
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.ArrayList;
-
 public class PlayerTest {
-//    private void testPlayer(AbstractPlayer p, String symbol) {
-//        Assert.assertEquals(symbol, p.getPiece().getSymbol());
-//    }
-//
-//    @Test
-//    public void testConstructors() {
-//        Player p1 = new Player("x");
-//        testPlayer(p1, "x");
-//
-//        Player p2 = new Player("o");
-//        testPlayer(p2, "o");
-//    }
+    private void testPlayer(AbstractPlayer p, int playerNum,
+                            String name, AbstractBoard board,
+                            moveStrategy moveStrat) {
+        Assert.assertEquals(playerNum, p.getPlayerNum());
+        Assert.assertEquals(name, p.getName());
+        Assert.assertEquals(board, p.getBoard());
+        Assert.assertEquals(moveStrat.getClass(), p.getMoveStrat().getClass());
+    }
+
+    @Test
+    public void testGomokuConstructor() {
+        GomokuBoard gb = new GomokuBoard();
+        GomokuPlayer p = new GomokuPlayer(1, "name", gb);
+        moveStrategy gs = new GomokuMoveStrategy(p);
+        testPlayer(p, 1, "name", gb, gs);
+    }
+
+    @Test
+    public void testConnect4Constructor() {
+        Connect4Game cg = new Connect4Game();
+        Connect4Board cb = new Connect4Board(cg);
+        Connect4Player cp = new Connect4Player(2, "nickname", cb);
+        Connect4MoveStrategy cs = new Connect4MoveStrategy(cp);
+
+        testPlayer(cp, 2, "nickname", cb, cs);
+    }
+
+    @Test
+    public void testCheckersConstructor() {
+        CheckersGame cg = new CheckersGame();
+        CheckersBoard cb = new CheckersBoard(cg);
+        CheckersPlayer cp = new CheckersPlayer(2, "who?", cb);
+        CheckersMoveStrategy cs = new CheckersMoveStrategy(cp);
+
+        testPlayer(cp, 2, "who?", cb, cs);
+    }
 
     @Test
     public void testHasWin() {

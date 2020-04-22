@@ -58,4 +58,25 @@ public class PieceTest {
         Assert.assertArrayEquals(a.get(0), cp.findJumps(me).get(0));
         Assert.assertArrayEquals(a.get(1), cp.findJumps(me).get(1));
     }
+
+    @Test
+    public void testFindLocalJumps_multipleJumps() {
+        CheckersGame cg = new CheckersGame();
+        CheckersPiece p1 = (CheckersPiece) cg.getBoard().getGrid().get(2).get(3);
+
+        cg.getP1().takeMove(new int[] {1,2,2,3});
+        cg.getP2().takeMove(new int[] {4,5,3,4});
+        cg.getP1().takeMove(new int[] {2,3,4,5});
+        cg.getP2().takeMove(new int[] {3,6,5,4});
+        cg.getP2().takeMove(new int[] {5,6,4,5});
+        cg.getP2().takeMove(new int[] {5,4,4,3});
+
+        ArrayList<int[]> a = new ArrayList<>();
+        a.add(new int[] {3,2,5,4,3,6});
+
+        Assert.assertEquals(1, p1.findJumps(new int[] {3,2}).size());
+        Assert.assertArrayEquals(a.get(0), p1.findJumps(new int[] {3,2}).get(0));
+        Assert.assertTrue(cg.getBoard().validMove(a.get(0),cg.getP1()));
+
+    }
 }

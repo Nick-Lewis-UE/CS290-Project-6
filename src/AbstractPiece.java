@@ -45,6 +45,10 @@ public abstract class AbstractPiece {
         this.location = location;
     }
 
+    public AbstractBoard getBoard() {
+        return board;
+    }
+
     public ArrayList<int[]> generateMoves() {
         return null;
     }

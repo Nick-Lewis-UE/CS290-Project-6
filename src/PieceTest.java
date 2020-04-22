@@ -4,16 +4,48 @@ import org.junit.Test;
 import java.util.ArrayList;
 
 public class PieceTest {
-//    private void testPiece(AbstractPiece p, String symbol) {
-//        Assert.assertEquals(symbol, p.getSymbol());
-//    }
+    private void testPiece(AbstractPiece p, String symbol,
+                           AbstractBoard board, int[] location,
+                           AbstractPlayer player) {
+        Assert.assertEquals(symbol, p.getSymbol());
+        Assert.assertEquals(board.getClass(), p.getBoard().getClass());
+        Assert.assertArrayEquals(location, p.getLocation());
+        Assert.assertEquals(player.getClass(), p.getPlayer().getClass());
+    }
 
-//    @Test
-//    public void testConstructors() {
-//        String s1 = "x";
-//        AbstractPiece p1 = new AbstractPiece(s1);
-//        testPiece(p1, s1);
-//    }
+    @Test
+    public void testGomokuConstructors() {
+        GomokuGame gg = new GomokuGame();
+        GomokuBoard gb = new GomokuBoard();
+        int[] location = new int[] {5,6};
+        AbstractPlayer gp = gg.getP1();
+        String s1 = "x";
+        AbstractPiece p1 = new GomokuPiece(s1, gb, location, gp);
+        testPiece(p1, s1, gb, location, gp);
+    }
+
+    @Test
+    public void testConnect4Constructor() {
+        Connect4Game cg = new Connect4Game();
+        Connect4Board cb = new Connect4Board(cg);
+        int[] location = new int[] {2,3};
+        AbstractPlayer cp = cg.getP1();
+        String s1 = "x";
+        AbstractPiece p1 = new Connect4Piece(s1, cb, location, cp);
+        testPiece(p1, s1, cb, location, cp);
+    }
+
+    @Test
+    public void testCheckersConstructor() {
+        CheckersGame cg = new CheckersGame();
+        CheckersBoard cb = new CheckersBoard(cg);
+        int[] location = new int[] {2,3};
+        AbstractPlayer cp = cg.getP1();
+        String s1 = "x";
+        AbstractPiece p1 = new CheckersPiece(s1, cb, location, cp);
+        testPiece(p1, s1, cb, location, cp);
+    }
+
     @Test
     public void testSimpleMoves() {
         CheckersGame cg = new CheckersGame();

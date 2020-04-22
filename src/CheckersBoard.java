@@ -15,29 +15,6 @@ public class CheckersBoard extends AbstractBoard {
     }
 
     @Override
-    public void takeMove(AbstractPiece p, int[] move) {
-        AbstractPiece moved = grid.get(move[1]).get(move[0]);
-
-        for (int i = 3; i < move.length; i = i + 2) {
-            grid.get(move[i]).set(move[i - 1], moved);
-            grid.get(move[i - 2]).set(move[i - 3],
-                    new NullPiece(this, new int[] {move[i - 3], move[i - 2]}));
-
-            if (isJumpMove(move)) {
-                grid.get((move[i]+ move[i-2])/2).set((move[i-1]+move[i-3])/2,
-                        new NullPiece(this,
-                                new int[] {(move[i-1]+move[i-3])/2, (move[i]+ move[i-2])/2}));
-            }
-        }
-
-        if (kingMe(move, p)) {
-            grid.get(move[move.length - 1]).set(move[move.length - 2],
-                    new CheckersKingPiece(moved.getSymbol().toUpperCase(), this,
-                            new int[] {move[move.length - 2], move[move.length - 1]}, p.getPlayer()));
-        }
-    }
-
-    @Override
     public String toString() {
         int row_num = 8;
         StringBuilder board = new StringBuilder("|A|B|C|D|E|F|G|H|\n");
@@ -114,14 +91,6 @@ public class CheckersBoard extends AbstractBoard {
         return abs(loc[3]-loc[1]) == 2 && abs(loc[2]-loc[0]) == 2;
     }
 
-    protected int[] getJumpedPosition(int[] loc) {
-        int[] jumped = new int[2];
-        jumped[0] = (loc[2]+loc[0])/2;
-        jumped[1] = (loc[3]+loc[1])/2;
-
-        return jumped;
-    }
-
     protected ArrayList<int[]> findLegalMoves(AbstractPlayer player) {
         ArrayList<int[]> legalMoves = new ArrayList<>();
 
@@ -139,106 +108,6 @@ public class CheckersBoard extends AbstractBoard {
         } else {
             legalMoves.stream().filter(each -> !isJumpMove(each)).forEach(allMoves::add);
         }
-        return allMoves;
-    }
-
-    protected ArrayList<int[]> findAllSimpleMoves(AbstractPiece p) {
-        ArrayList<int[]> a = new ArrayList<>();
-
-        for (int r = 0; r <(getGrid()).size(); r++) {
-            for (int c = 0; c <(getGrid()).get(r).size(); c++) {
-                if (getGrid().get(r).get(c).equals(p)) {
-                    a.addAll(findLocalSimpleMoves(new int[]{c, r},
-                            getGrid().get(r).get(c)));
-                }
-            }
-        }
-
-        return a;
-    }
-
-    protected ArrayList<int[]> findLocalSimpleMoves(int[] me, AbstractPiece p) {
-        int[] rowAdds;
-        int[] colAdds = new int[] {1,-1};
-        ArrayList<int[]> allMoves = new ArrayList<>();
-
-        if (p.getSymbol().equals("x")) {
-            rowAdds = new int[] {1,1};
-        } else if (p.getSymbol().equals("o")){
-            rowAdds = new int[] {-1,-1};
-        } else {
-            rowAdds = new int[] {-1,-1,1,1};
-            colAdds = new int[] {1,-1,1,-1};
-        }
-
-        for (int i = 0; i < 2; i++) {
-            try {
-                AbstractPiece nextPiece = getGrid().get(me[1] + rowAdds[i]).get(me[0] + colAdds[i]);
-
-                if (nextPiece.isEmpty()) {
-                    int[] newMe = appendMoveArray(me,
-                            new int[] {me[me.length-2]+colAdds[i],
-                                    me[me.length-1]+rowAdds[i]});
-                    allMoves.add(newMe);
-                }
-            } catch (IndexOutOfBoundsException ignored) {}
-        }
-
-        return allMoves;
-    }
-
-    protected ArrayList<int[]> findAllJumps(AbstractPiece p) {
-        ArrayList<int[]> a = new ArrayList<>();
-
-        for (int r = 0; r <(getGrid()).size(); r++) {
-            for (int c = 0; c <(getGrid()).get(r).size(); c++) {
-                if (getGrid().get(r).get(c).equals(p.getSymbol())) {
-                    a.addAll(findLocalJumps(new int[]{c, r},
-                            getGrid().get(r).get(c)));
-                }
-            }
-        }
-
-        return a;
-    }
-
-    protected ArrayList<int[]> findLocalJumps (int[] me, AbstractPiece p) {
-        int[] rowAdds;
-        int[] colAdds = new int[] {1,-1};
-        boolean moreJumps = false;
-        ArrayList<int[]> allMoves = new ArrayList<>();
-
-        if (p.getSymbol().equals("x")) {
-            rowAdds = new int[] {1,1};
-        } else if (p.getSymbol().equals("o")){
-            rowAdds = new int[] {-1,-1};
-        } else {
-            rowAdds = new int[] {-1,-1,1,1};
-            colAdds = new int[] {1,-1,1,-1};
-        }
-
-        for (int i = 0; i < 2; i++) {
-            try {
-                AbstractPiece nextPiece = getGrid().get(me[me.length-1] + rowAdds[i]).
-                        get(me[me.length-2] + colAdds[i]);
-
-                if (!nextPiece.isEmpty() &&
-                        !nextPiece.equals(p) &&
-                        getGrid().get(me[me.length - 1] + 2 * rowAdds[i]).
-                                get(me[me.length - 2] + 2 * colAdds[i]).isEmpty()) {
-                    int[] newMe = appendMoveArray(me,
-                            new int[]{me[me.length - 2] + 2 * colAdds[i],
-                                    me[me.length - 1] + 2 * rowAdds[i]});
-                    allMoves.addAll(findLocalJumps(newMe, p));
-                    moreJumps = true;
-                }
-            } catch(IndexOutOfBoundsException ignored) {}
-        }
-
-        if (!moreJumps && me.length != 2) {
-            allMoves.add(me);
-        }
-
         return allMoves;
     }
 

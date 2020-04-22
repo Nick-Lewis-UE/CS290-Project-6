@@ -26,13 +26,9 @@ public abstract class AbstractBoard {
         return grid;
     }
 
-    public abstract void takeMove(AbstractPiece p, int[] move);
-
     public abstract String toString();
 
     protected abstract ArrayList<ArrayList<AbstractPiece>> makeStartBoard(AbstractGame game);
-
-//    public abstract boolean hasWin(AbstractPlayer p, int[] loc);
 
     public abstract boolean validMove(int[] move, AbstractPlayer p);
 

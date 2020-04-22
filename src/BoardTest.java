@@ -75,29 +75,4 @@ public class BoardTest {
         GomokuBoard g1 = new GomokuBoard();
         g1.toString();
     }
-
-//    @Test
-//    public void testJustWon() {
-//        GomokuBoard g1 = new GomokuBoard();
-//        Piece p1 = new Piece("x");
-//        AbstractPlayer player1 = new AbstractPlayer("x", "nick");
-//
-//        g1.takeMove(p1,makeLoc(1,1));
-//        g1.takeMove(p1,makeLoc(1,2));
-//        g1.takeMove(p1,makeLoc(1,3));
-//        g1.takeMove(p1,makeLoc(1,4));
-//        g1.takeMove(p1,makeLoc(1,5));
-//
-//        Assert.assertEquals(true, g1.hasWin(player1, makeLoc(1,1)));
-//
-//        GomokuBoard g2 = new GomokuBoard();
-//        g2.takeMove(p1,makeLoc(5,2));
-//        g2.takeMove(p1,makeLoc(6,2));
-//        g2.takeMove(p1,makeLoc(7,2));
-//        g2.takeMove(p1,makeLoc(8,2));
-//        g2.takeMove(p1,makeLoc(9,2));
-//
-//        Assert.assertEquals(true, g2.hasWin(player1, makeLoc(7,2)));
-//
-//    }
 }

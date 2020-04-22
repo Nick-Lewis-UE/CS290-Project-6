@@ -2,12 +2,11 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class PieceTest {
-    private void testPiece(AbstractPiece p, String symbol) {
-        Assert.assertEquals(symbol, p.getSymbol());
-    }
+//    private void testPiece(AbstractPiece p, String symbol) {
+//        Assert.assertEquals(symbol, p.getSymbol());
+//    }
 
 //    @Test
 //    public void testConstructors() {

@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class CheckersPiece extends AbstractPiece {
     public CheckersPiece(String symbol, AbstractBoard board,

@@ -15,6 +15,7 @@ public class CheckersMoveStrategy implements moveStrategy {
             p.getBoard().getGrid().get(move[i]).set(move[i - 1], moved);
             p.getBoard().getGrid().get(move[i - 2]).set(move[i - 3],
                     new NullPiece(p.getBoard(), new int[] {move[i - 3], move[i - 2]}));
+            moved.setLocation(new int[] {move[i - 1], move[i]});
 
             if (isJumpMove(move)) {
                 p.getBoard().getGrid().get((move[i]+ move[i-2])/2).set((move[i-1]+move[i-3])/2,

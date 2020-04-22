@@ -1,7 +1,9 @@
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class CheckersBoardTest extends BoardTest {
 
@@ -153,43 +155,43 @@ public class CheckersBoardTest extends BoardTest {
 
         testBoard(c1, a);
     }
-//
-//    @Test
-//    public void testValidMove() {
-//        CheckersBoard c1 = new CheckersBoard();
-//        CheckersPlayer p1 = new CheckersPlayer(1, "player", c1);
-//        CheckersPlayer p2 = new CheckersPlayer(2, "player", c1);
-//        // valid move
-//        int[] move1 = new int[] {1,2,2,3};
-//        Assert.assertTrue(c1.validMove(move1, p1));
-//
-//        // invalid starting point
-//        int[] move2 = new int[] {1,1,2,2};
-//        Assert.assertFalse(c1.validMove(move2, p1));
-//
-//        // invalid ending point
-//        int[] move3 = new int[] {0,1,1,2};
-//        Assert.assertFalse(c1.validMove(move3, p1));
-//
-//        // no piece to be jumped
-//        int[] move4 = new int[] {1,2,3,4};
-//        Assert.assertFalse(c1.validMove(move4, p1));
-//
-//        // not diagonal move
-//        int[] move5 = new int[] {1,2,1,3};
-//        Assert.assertFalse(c1.validMove(move5, p1));
-//
-//        // can't move backwards
-//        p1.takeMove(new int[] {7,2,6,3});
-//        int[] move6 = new int[] {6,3,7,2};
-//        Assert.assertFalse(c1.validMove(move6, p1));
-//
-//        // must take forced jump
-//        p2.takeMove(new int[] {4,5,5,4});
-//        int[] move7 = new int[] {3,2,2,3};
-//        Assert.assertFalse(c1.validMove(move7, p1));
-//    }
-//
+
+    @Test
+    public void testValidMove() {
+        CheckersBoard c1 = new CheckersBoard(new CheckersGame());
+        CheckersPlayer p1 = new CheckersPlayer(1, "player", c1);
+        CheckersPlayer p2 = new CheckersPlayer(2, "player", c1);
+        // valid move
+        int[] move1 = new int[] {1,2,2,3};
+        Assert.assertTrue(c1.validMove(move1, p1));
+
+        // invalid starting point
+        int[] move2 = new int[] {1,1,2,2};
+        Assert.assertFalse(c1.validMove(move2, p1));
+
+        // invalid ending point
+        int[] move3 = new int[] {0,1,1,2};
+        Assert.assertFalse(c1.validMove(move3, p1));
+
+        // no piece to be jumped
+        int[] move4 = new int[] {1,2,3,4};
+        Assert.assertFalse(c1.validMove(move4, p1));
+
+        // not diagonal move
+        int[] move5 = new int[] {1,2,1,3};
+        Assert.assertFalse(c1.validMove(move5, p1));
+
+        // can't move backwards
+        p1.takeMove(new int[] {7,2,6,3});
+        int[] move6 = new int[] {6,3,7,2};
+        Assert.assertFalse(c1.validMove(move6, p1));
+
+        // must take forced jump
+        p2.takeMove(new int[] {4,5,5,4});
+        int[] move7 = new int[] {3,2,2,3};
+        Assert.assertFalse(c1.validMove(move7, p1));
+    }
+
 //    @Test
 //    public void testHasTie() {
 //        CheckersBoard c = new CheckersBoard();

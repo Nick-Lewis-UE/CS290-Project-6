@@ -19,7 +19,7 @@ public class Connect4Board extends RowBasedBoard {
 
     public String toString() {
         StringBuilder board = new StringBuilder();
-        System.out.print("|1|2|3|4|5|6|7|\n");
+        board.append("|1|2|3|4|5|6|7|\n");
         for (int i = 0; i < num_row; i++) {
             board.append("|").append(grid.get(i).get(0).getSymbol()).
                     append("|").append(grid.get(i).get(1).getSymbol()).

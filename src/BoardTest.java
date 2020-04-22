@@ -31,9 +31,8 @@ public class BoardTest {
         }
     }
 
-
     public static ArrayList<ArrayList<AbstractPiece>> makeEmptyBoard(int rows, int cols) {
-        ArrayList<ArrayList<AbstractPiece>> a= new ArrayList();
+        ArrayList<ArrayList<AbstractPiece>> a= new ArrayList<>();
         for (int i = 0; i < rows; i++) {
             a.add(i, new ArrayList<>());
             for (int j = 0; j < cols; j++) {
@@ -95,8 +94,16 @@ public class BoardTest {
 
     @Test
     public void testConnect4ToString() {
-        System.out.println("Empty Gomoku Board.");
-        GomokuBoard g1 = new GomokuBoard();
-        g1.toString();
+        Connect4Board c1 = new Connect4Board(new Connect4Game());
+
+        String s = "|1|2|3|4|5|6|7|\n" +
+                "| | | | | | | |\n" +
+                "| | | | | | | |\n" +
+                "| | | | | | | |\n" +
+                "| | | | | | | |\n" +
+                "| | | | | | | |\n" +
+                "| | | | | | | |\n";
+
+        Assert.assertEquals(s, c1.toString());
     }
 }

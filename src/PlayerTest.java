@@ -1,8 +1,10 @@
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.ArrayList;
+
 public class PlayerTest {
-//    private void testPlayer(Player p, String symbol) {
+//    private void testPlayer(AbstractPlayer p, String symbol) {
 //        Assert.assertEquals(symbol, p.getPiece().getSymbol());
 //    }
 //

@@ -27,7 +27,7 @@ public class CheckersPiece extends AbstractPiece {
         return legalMoves;
     }
 
-    protected ArrayList<int[]> findJumps (int[] me) {
+    public ArrayList<int[]> findJumps (int[] me) {
         boolean moreJumps = false;
         ArrayList<int[]> allMoves = new ArrayList<>();
 

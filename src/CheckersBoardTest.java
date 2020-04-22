@@ -1,3 +1,4 @@
+import com.sun.tools.doclint.Checker;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -192,109 +193,127 @@ public class CheckersBoardTest extends BoardTest {
         Assert.assertFalse(c1.validMove(move7, p1));
     }
 
-//    @Test
-//    public void testHasTie() {
-//        CheckersBoard c = new CheckersBoard();
-//        CheckersPlayer p1 = new CheckersPlayer(1, "who", c);
-//        CheckersPlayer p2 = new CheckersPlayer(2, "where", c);
-//
-//        Assert.assertFalse(c.hasTie());
-//
-//       p1.takeMove(new int[] {1,2,0,3});
-//       p1.takeMove(new int[] {3,2,2,3});
-//       p1.takeMove(new int[] {5,2,4,3});
-//       p1.takeMove(new int[] {7,2,6,3});
-//       p1.takeMove(new int[] {0,1,1,2});
-//       p1.takeMove(new int[] {2,1,3,2});
-//       p1.takeMove(new int[] {4,1,5,2});
-//       p1.takeMove(new int[] {6,1,7,2});
-//       p1.takeMove(new int[] {1,0,0,1});
-//       p1.takeMove(new int[] {3,0,2,1});
-//       p1.takeMove(new int[] {5,0,4,1});
-//       p1.takeMove(new int[] {7,0,6,1});
-//
-//       p2.takeMove(new int[] {0,5,1,4});
-//       p2.takeMove(new int[] {2,5,3,4});
-//       p2.takeMove(new int[] {4,5,5,4});
-//       p2.takeMove(new int[] {6,5,7,4});
-//       p2.takeMove(new int[] {1,6,0,5});
-//       p2.takeMove(new int[] {3,6,2,5});
-//       p2.takeMove(new int[] {5,6,4,5});
-//       p2.takeMove(new int[] {7,6,6,5});
-//       p2.takeMove(new int[] {0,7,1,6});
-//       p2.takeMove(new int[] {2,7,3,6});
-//       p2.takeMove(new int[] {4,7,5,6});
-//       p2.takeMove(new int[] {6,7,7,6});
-//
-//        Assert.assertTrue(c.hasTie());
-//    }
-//
-//    @Test
-//    public void testKingMe() {
-//        CheckersBoard c = new CheckersBoard();
-//        CheckersPiece xPiece = new CheckersPiece("x");
-//        CheckersPiece oPiece = new CheckersPiece("o");
-//
-//        Assert.assertTrue(c.kingMe(new int[] {1,0,7,7}, xPiece));
-//        Assert.assertTrue(c.kingMe(new int[] {6,7,4,0}, oPiece));
-//    }
-//
-//    @Test
-//    public void testIsJumpMove() {
-//        CheckersBoard c1 = new CheckersBoard();
-//        int[] j = new int[4];
-//        j[0] = 2;
-//        j[1] = 3;
-//        j[2] = 4;
-//        j[3] = 5;
-//
-//        Assert.assertTrue(c1.isJumpMove(j));
-//        Assert.assertTrue(c1.isJumpMove(new int[] {3,6,5,4}));
-//    }
-//
-//    @Test
-//    public void testGetJumpedPosition() {
-//        CheckersBoard c1 = new CheckersBoard();
-//        int[] j = new int[4];
-//        j[0] = 2;
-//        j[1] = 3;
-//        j[2] = 4;
-//        j[3] = 5;
-//
-//        int[] jumped = new int[2];
-//        jumped[0] = 3;
-//        jumped[1] = 4;
-//
-//        Assert.assertArrayEquals(jumped, c1.getJumpedPosition(j));
-//    }
-//
-//    @Test
-//    public void testFindLegalMoves() {
-//        CheckersBoard c1 = new CheckersBoard();
-//        AbstractPiece p1 = new AbstractPiece("x");
-//        ArrayList<int[]> a1 = c1.findLegalMoves(p1);
-//        ArrayList<int[]> a2 = c1.findAllSimpleMoves(p1);
-//
-//        for (int i = 0; i < a2.size(); i++) {
-//            Assert.assertArrayEquals(a2.get(i), a1.get(i));
-//        }
-//
-//        c1.takeMove(new AbstractPiece("x"), new int[] {1,2,2,3});
-//        c1.takeMove(new AbstractPiece("o"), new int[] {4,5,3,4});
-//        c1.takeMove(new AbstractPiece("o"), new int[] {0,5,1,4});
-//        c1.takeMove(new AbstractPiece("x"), new int[] {7,2,6,3});
-//        c1.takeMove(new AbstractPiece("o"), new int[] {6,5,5,4});
-//
-//        ArrayList<int[]> a3 = c1.findLegalMoves(p1);
-//        ArrayList<int[]> a4 = c1.findAllJumps(p1);
-//
-//
-//        for (int i = 0; i < a4.size(); i++) {
-//            Assert.assertArrayEquals(a4.get(i), a3.get(i));
-//        }
-//
-//    }
-//
+    @Test
+    public void testHasTie() {
+        CheckersBoard c = new CheckersBoard(new CheckersGame());
+        CheckersPlayer p1 = new CheckersPlayer(1, "who", c);
+        CheckersPlayer p2 = new CheckersPlayer(2, "where", c);
+
+        Assert.assertFalse(c.hasTie());
+
+       p1.takeMove(new int[] {1,2,0,3});
+       p1.takeMove(new int[] {3,2,2,3});
+       p1.takeMove(new int[] {5,2,4,3});
+       p1.takeMove(new int[] {7,2,6,3});
+       p1.takeMove(new int[] {0,1,1,2});
+       p1.takeMove(new int[] {2,1,3,2});
+       p1.takeMove(new int[] {4,1,5,2});
+       p1.takeMove(new int[] {6,1,7,2});
+       p1.takeMove(new int[] {1,0,0,1});
+       p1.takeMove(new int[] {3,0,2,1});
+       p1.takeMove(new int[] {5,0,4,1});
+       p1.takeMove(new int[] {7,0,6,1});
+
+       p2.takeMove(new int[] {0,5,1,4});
+       p2.takeMove(new int[] {2,5,3,4});
+       p2.takeMove(new int[] {4,5,5,4});
+       p2.takeMove(new int[] {6,5,7,4});
+       p2.takeMove(new int[] {1,6,0,5});
+       p2.takeMove(new int[] {3,6,2,5});
+       p2.takeMove(new int[] {5,6,4,5});
+       p2.takeMove(new int[] {7,6,6,5});
+       p2.takeMove(new int[] {0,7,1,6});
+       p2.takeMove(new int[] {2,7,3,6});
+       p2.takeMove(new int[] {4,7,5,6});
+       p2.takeMove(new int[] {6,7,7,6});
+
+        Assert.assertTrue(c.hasTie());
+    }
+
+    @Test
+    public void testKingMe() {
+        CheckersGame cg =new CheckersGame();
+        CheckersBoard c = new CheckersBoard(cg);
+        CheckersPiece xPiece = new CheckersPiece("x", c,
+                new int[0], cg.getP1());
+        CheckersPiece oPiece = new CheckersPiece("o", c,
+                new int[0], cg.getP2());
+
+        Assert.assertTrue(c.kingMe(new int[] {1,0,7,7}, xPiece));
+        Assert.assertTrue(c.kingMe(new int[] {6,7,4,0}, oPiece));
+    }
+
+    @Test
+    public void testIsJumpMove() {
+        CheckersBoard c1 = new CheckersBoard(new CheckersGame());
+        int[] j = new int[4];
+        j[0] = 2;
+        j[1] = 3;
+        j[2] = 4;
+        j[3] = 5;
+
+        Assert.assertTrue(c1.isJumpMove(j));
+        Assert.assertTrue(c1.isJumpMove(new int[] {3,6,5,4}));
+    }
+
+    @Test
+    public void testFindLegalMoves() {
+        CheckersGame cg = new CheckersGame();
+        CheckersBoard c1 = new CheckersBoard(cg);
+        AbstractPlayer p1 = cg.getP1();
+        AbstractPlayer p2 = cg.getP2();
+        ArrayList<int[]> a1 = c1.findLegalMoves(p1);
+
+        ArrayList<int[]> legalMoves = new ArrayList<>();
+        ArrayList<ArrayList<AbstractPiece>> b = c1.makeStartBoard(cg);
+        for (int r = 0; r <(b).size(); r++) {
+            for (int c = 0; c <(b).get(r).size(); c++) {
+                if (b.get(r).get(c).getPlayer().getPlayerNum() == p1.getPlayerNum()) {
+                    legalMoves.addAll(b.get(r).get(c).generateMoves());
+                }
+            }
+        }
+
+        for (int i = 0; i < legalMoves.size(); i++) {
+            Assert.assertArrayEquals(legalMoves.get(i), a1.get(i));
+        }
+
+        cg.getP1().takeMove(new int[] {1,2,2,3});
+        cg.getP2().takeMove(new int[] {4,5,3,4});
+        cg.getP2().takeMove(new int[] {0,5,1,4});
+        cg.getP1().takeMove(new int[] {7,2,6,3});
+        cg.getP2().takeMove(new int[] {6,5,5,4});
+
+        b.get(2).set(1, new NullPiece(c1, new int[] {1,2}));
+        b.get(3).set(2, new CheckersPiece("x", c1,
+                new int[] {2,3}, p1));
+        b.get(5).set(4, new NullPiece(c1, new int[] {4,5}));
+        b.get(4).set(3, new CheckersPiece("o", c1,
+                new int[] {3,4}, p2));
+        b.get(5).set(0, new NullPiece(c1, new int[] {0,5}));
+        b.get(4).set(1, new CheckersPiece("o", c1,
+                new int[] {1,4}, p2));
+        b.get(2).set(7, new NullPiece(c1, new int[] {7,6}));
+        b.get(3).set(6, new CheckersPiece("x", c1,
+                new int[] {6,3}, p1));
+        b.get(5).set(6, new NullPiece(c1, new int[] {6,5}));
+        b.get(4).set(5, new CheckersPiece("o", c1,
+                new int[] {5,4}, p2));
+
+        CheckersBoard c100 = (CheckersBoard) cg.getBoard();
+        ArrayList<int[]> a3 = c100.findLegalMoves(p1);
+
+        ArrayList<int[]> legalMoves2 = new ArrayList<>();
+        legalMoves2.add(new int[] {2,3,4,5});
+        legalMoves2.add(new int[] {2,3,0,5});
+        legalMoves2.add(new int[] {6,3,4,5});
+
+        for (int i = 0; i < legalMoves2.size(); i++) {
+            Assert.assertArrayEquals(legalMoves2.get(i), ((CheckersBoard) cg.getBoard()).findLegalMoves(cg.getP1()).get(i));
+        }
+
+    }
+
 //    @Test
 //    public void testFindAllSimpleMoves() {
 //        CheckersBoard c1 = new CheckersBoard();

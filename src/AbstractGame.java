@@ -21,7 +21,7 @@ public abstract class AbstractGame {
             turn.takeMove(move);
             System.out.println(this.board.toString());
 
-            if (turn.hasWin(move)) {
+            if (turn.hasWon(move)) {
                 endMessage = turn.getWinMessage();
                 break;
             }

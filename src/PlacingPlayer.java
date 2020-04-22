@@ -9,7 +9,7 @@ public class PlacingPlayer extends AbstractPlayer {
     protected AbstractPiece piece;
     protected int needToWin;
 
-    public boolean hasWin(int[] loc) {
+    public boolean hasWon(int[] loc) {
         // horizontal win
         for (int j = 1; j <= board.getNum_row(); j++) {
             if (checkHorizontalWin(j))

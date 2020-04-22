@@ -4,7 +4,7 @@ public class NullPlayer extends AbstractPlayer {
     }
 
     @Override
-    public boolean hasWin(int[] loc) {
+    public boolean hasWon(int[] loc) {
         return false;
     }
 }

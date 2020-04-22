@@ -4,7 +4,7 @@ import java.util.stream.Stream;
 
 import static java.lang.Math.abs;
 
-public class CheckersBoard extends AbstractBoard {
+public class CheckersBoard extends MovingBoard {
 
     public CheckersBoard(AbstractGame game) {
         this.num_col = 8;
@@ -12,26 +12,6 @@ public class CheckersBoard extends AbstractBoard {
         this.size = 64;
         this.grid = makeStartBoard(game);
         this.game = game;
-    }
-
-    @Override
-    public String toString() {
-        int row_num = 8;
-        StringBuilder board = new StringBuilder("|A|B|C|D|E|F|G|H|\n");
-        for (int i = 0; i < num_row; i++) {
-            board.append("|").
-                    append(grid.get(i).get(0).getSymbol()).append("|").
-                    append(grid.get(i).get(1).getSymbol()).append("|").
-                    append(grid.get(i).get(2).getSymbol()).append("|").
-                    append(grid.get(i).get(3).getSymbol()).append("|").
-                    append(grid.get(i).get(4).getSymbol()).append("|").
-                    append(grid.get(i).get(5).getSymbol()).append("|").
-                    append(grid.get(i).get(6).getSymbol()).append("|").
-                    append(grid.get(i).get(7).getSymbol()).append("|").
-                    append(" ").append(row_num--).append("\n");
-        }
-
-        return board.toString();
     }
 
     @Override

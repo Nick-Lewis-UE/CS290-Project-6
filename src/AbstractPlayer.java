@@ -48,5 +48,5 @@ public abstract class AbstractPlayer {
         moveStrat.takeMove(move);
     }
 
-    public abstract boolean hasWin(int[] loc);
+    public abstract boolean hasWon(int[] loc);
 }

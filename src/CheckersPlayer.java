@@ -24,7 +24,7 @@ public class CheckersPlayer extends AbstractPlayer {
 
     protected AbstractPiece piece;
 
-    public boolean hasWin(int[] loc) {
+    public boolean hasWon(int[] loc) {
         for (ArrayList<AbstractPiece> eachRow : board.getGrid()) {
             for (AbstractPiece eachPiece : eachRow) {
                 if (!eachPiece.equals(piece) &&

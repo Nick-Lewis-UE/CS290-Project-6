@@ -51,7 +51,7 @@ public class PlayerTest {
         gs1.takeMove(BoardTest.makeLoc(1, 4));
         gs1.takeMove(BoardTest.makeLoc(1, 5));
 
-        Assert.assertEquals(true, player1.hasWin(BoardTest.makeLoc(1, 1)));
+        Assert.assertEquals(true, player1.hasWon(BoardTest.makeLoc(1, 1)));
     }
 
     @Test
@@ -65,7 +65,7 @@ public class PlayerTest {
         gs2.takeMove(BoardTest.makeLoc(8,2));
         gs2.takeMove(BoardTest.makeLoc(9,2));
 
-        Assert.assertEquals(true, player2.hasWin(BoardTest.makeLoc(7,2)));
+        Assert.assertEquals(true, player2.hasWon(BoardTest.makeLoc(7,2)));
     }
 
     @Test
@@ -83,7 +83,7 @@ public class PlayerTest {
             }
         }
 
-        Assert.assertFalse(p1.hasWin(new int[0]));
-        Assert.assertTrue(p2.hasWin(new int[0]));
+        Assert.assertFalse(p1.hasWon(new int[0]));
+        Assert.assertTrue(p2.hasWon(new int[0]));
     }
 }

@@ -1,4 +1,4 @@
-public class Connect4Board extends RowBasedBoard {
+public class Connect4Board extends PlacingBoard {
 
     public Connect4Board(AbstractGame game) {
         this.num_col = 7;

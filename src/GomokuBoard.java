@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class GomokuBoard extends RowBasedBoard {
+public class GomokuBoard extends PlacingBoard {
 
     public GomokuBoard() {
 

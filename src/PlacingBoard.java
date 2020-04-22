@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 import static java.lang.Math.min;
 
-public abstract class RowBasedBoard extends AbstractBoard {
+public abstract class PlacingBoard extends AbstractBoard {
     protected int needToWin;
 
     public ArrayList<ArrayList<AbstractPiece>> makeStartBoard(AbstractGame game) {

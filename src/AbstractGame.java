@@ -20,13 +20,14 @@ public abstract class AbstractGame {
             move = scanForMove();
             turn.takeMove(move);
             System.out.println(this.board.toString());
+
             if (turn.hasWin(move)) {
                 endMessage = turn.getWinMessage();
                 break;
             }
 
             if (board.hasTie()) {
-                endMessage = "It's a tie! You filled the board.";
+                endMessage = "It's a tie!";
                 break;
             }
 

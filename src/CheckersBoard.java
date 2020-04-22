@@ -80,19 +80,6 @@ public class CheckersBoard extends AbstractBoard {
         return a;
     }
 
-//    @Override
-//    public boolean hasWin(AbstractPlayer p, int[] loc) {
-//        for (ArrayList<Piece> eachRow : grid) {
-//            for (Piece eachPiece : eachRow) {
-//                if (!eachPiece.equals(p.getPiece()) &&
-//                        !eachPiece.isEmpty())
-//                    return false;
-//            }
-//        }
-//
-//        return true;
-//    }
-
     @Override
     public boolean validMove(int[] move, AbstractPlayer p) {
         ArrayList<int[]> moves = findLegalMoves(p);

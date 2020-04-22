@@ -66,11 +66,35 @@ public class BoardTest {
     }
 
     @Test
-    public void testPrintBoard() {
-        System.out.println("Empty Connect4 Board.");
-        Connect4Board b1 = new Connect4Board(new Connect4Game());
-        b1.toString();
+    public void testGomokuToString() {
+        GomokuBoard b1 = new GomokuBoard();
 
+        String s = "|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|\n" +
+                "| | | | | | | | | | | | | | | | | | | |1\n" +
+                "| | | | | | | | | | | | | | | | | | | |2\n" +
+                "| | | | | | | | | | | | | | | | | | | |3\n" +
+                "| | | | | | | | | | | | | | | | | | | |4\n" +
+                "| | | | | | | | | | | | | | | | | | | |5\n" +
+                "| | | | | | | | | | | | | | | | | | | |6\n" +
+                "| | | | | | | | | | | | | | | | | | | |7\n" +
+                "| | | | | | | | | | | | | | | | | | | |8\n" +
+                "| | | | | | | | | | | | | | | | | | | |9\n" +
+                "| | | | | | | | | | | | | | | | | | | |10\n" +
+                "| | | | | | | | | | | | | | | | | | | |11\n" +
+                "| | | | | | | | | | | | | | | | | | | |12\n" +
+                "| | | | | | | | | | | | | | | | | | | |13\n" +
+                "| | | | | | | | | | | | | | | | | | | |14\n" +
+                "| | | | | | | | | | | | | | | | | | | |15\n" +
+                "| | | | | | | | | | | | | | | | | | | |16\n" +
+                "| | | | | | | | | | | | | | | | | | | |17\n" +
+                "| | | | | | | | | | | | | | | | | | | |18\n" +
+                "| | | | | | | | | | | | | | | | | | | |19\n";
+
+        Assert.assertEquals(s, b1.toString());
+    }
+
+    @Test
+    public void testConnect4ToString() {
         System.out.println("Empty Gomoku Board.");
         GomokuBoard g1 = new GomokuBoard();
         g1.toString();

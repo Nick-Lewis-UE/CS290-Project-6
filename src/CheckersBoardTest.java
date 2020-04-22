@@ -5,141 +5,154 @@ import java.util.ArrayList;
 
 public class CheckersBoardTest extends BoardTest {
 
-//    int num_col = 8;
-//    int num_row = 8;
-//    int size = 64;
-//
-//    @Test
-//    public void testConstructors() {
-//        CheckersBoard c = new CheckersBoard();
-//        ArrayList<ArrayList<AbstractPiece>> b = c.makeStartBoard();
-//
-//        testBoard(c, num_col, num_row, size, b);
-//    }
-//
-//
-//    @Test
-//    public void testToString() {
-//        CheckersBoard c1 = new CheckersBoard();
-//
-//        String s = "|A|B|C|D|E|F|G|H|\n" +
-//                "| |x| |x| |x| |x| 8\n" +
-//                "|x| |x| |x| |x| | 7\n" +
-//                "| |x| |x| |x| |x| 6\n" +
-//                "| | | | | | | | | 5\n" +
-//                "| | | | | | | | | 4\n" +
-//                "|o| |o| |o| |o| | 3\n" +
-//                "| |o| |o| |o| |o| 2\n" +
-//                "|o| |o| |o| |o| | 1\n";
-//
-//        Assert.assertEquals(s, c1.toString());
-//    }
-//
-//    @Test
-//    public void testMakeStartBoard() {
-//        ArrayList<ArrayList<AbstractPiece>> a = new ArrayList<>();
-//        a.add(0, new ArrayList<>());
-//        a.add(1, new ArrayList<>());
-//        a.add(2, new ArrayList<>());
-//        a.add(3, new ArrayList<>());
-//        a.add(4, new ArrayList<>());
-//        a.add(5, new ArrayList<>());
-//        a.add(6, new ArrayList<>());
-//        a.add(7, new ArrayList<>());
-//
-//        a.get(0).add(0, new NullPiece());
-//        a.get(0).add(1, new AbstractPiece("x"));
-//        a.get(0).add(2, new NullPiece());
-//        a.get(0).add(3, new AbstractPiece("x"));
-//        a.get(0).add(4, new NullPiece());
-//        a.get(0).add(5, new AbstractPiece("x"));
-//        a.get(0).add(6, new NullPiece());
-//        a.get(0).add(7, new AbstractPiece("x"));
-//
-//        a.get(1).add(0, new AbstractPiece("x"));
-//        a.get(1).add(1, new NullPiece());
-//        a.get(1).add(2, new AbstractPiece("x"));
-//        a.get(1).add(3, new NullPiece());
-//        a.get(1).add(4, new AbstractPiece("x"));
-//        a.get(1).add(5, new NullPiece());
-//        a.get(1).add(6, new AbstractPiece("x"));
-//        a.get(1).add(7, new NullPiece());
-//
-//        a.get(2).add(0, new NullPiece());
-//        a.get(2).add(1, new AbstractPiece("x"));
-//        a.get(2).add(2, new NullPiece());
-//        a.get(2).add(3, new AbstractPiece("x"));
-//        a.get(2).add(4, new NullPiece());
-//        a.get(2).add(5, new AbstractPiece("x"));
-//        a.get(2).add(6, new NullPiece());
-//        a.get(2).add(7, new AbstractPiece("x"));
-//
-//        a.get(3).add(0, new NullPiece());
-//        a.get(3).add(1, new NullPiece());
-//        a.get(3).add(2, new NullPiece());
-//        a.get(3).add(3, new NullPiece());
-//        a.get(3).add(4, new NullPiece());
-//        a.get(3).add(5, new NullPiece());
-//        a.get(3).add(6, new NullPiece());
-//        a.get(3).add(7, new NullPiece());
-//
-//        a.get(4).add(0, new NullPiece());
-//        a.get(4).add(1, new NullPiece());
-//        a.get(4).add(2, new NullPiece());
-//        a.get(4).add(3, new NullPiece());
-//        a.get(4).add(4, new NullPiece());
-//        a.get(4).add(5, new NullPiece());
-//        a.get(4).add(6, new NullPiece());
-//        a.get(4).add(7, new NullPiece());
-//
-//        a.get(5).add(0, new AbstractPiece("o"));
-//        a.get(5).add(1, new NullPiece());
-//        a.get(5).add(2, new AbstractPiece("o"));
-//        a.get(5).add(3, new NullPiece());
-//        a.get(5).add(4, new AbstractPiece("o"));
-//        a.get(5).add(5, new NullPiece());
-//        a.get(5).add(6, new AbstractPiece("o"));
-//        a.get(5).add(7, new NullPiece());
-//
-//        a.get(6).add(0, new NullPiece());
-//        a.get(6).add(1, new AbstractPiece("o"));
-//        a.get(6).add(2, new NullPiece());
-//        a.get(6).add(3, new AbstractPiece("o"));
-//        a.get(6).add(4, new NullPiece());
-//        a.get(6).add(5, new AbstractPiece("o"));
-//        a.get(6).add(6, new NullPiece());
-//        a.get(6).add(7, new AbstractPiece("o"));
-//
-//        a.get(7).add(0, new AbstractPiece("o"));
-//        a.get(7).add(1, new NullPiece());
-//        a.get(7).add(2, new AbstractPiece("o"));
-//        a.get(7).add(3, new NullPiece());
-//        a.get(7).add(4, new AbstractPiece("o"));
-//        a.get(7).add(5, new NullPiece());
-//        a.get(7).add(6, new AbstractPiece("o"));
-//        a.get(7).add(7, new NullPiece());
-//
-//        CheckersBoard c1 = new CheckersBoard();
-//        testBoard(c1, a);
-//    }
-//
-//    @Test
-//    public void testHasWin() {
-////        CheckersBoard c1 = new CheckersBoard();
-////        AbstractPlayer p1 = new AbstractPlayer("x", "Nick");
-////        AbstractPlayer p2 = new AbstractPlayer("o", "Not Nick");
-////
-////        for (int i = 0; i < c1.getGrid().size(); i++) {
-////            for (int j = 0; j < c1.getGrid().get(0).size(); j++) {
-////                if (c1.getGrid().get(i).get(j).getSymbol().equals("x")) {
-////                    c1.getGrid().get(i).set(j, new NullPiece());
-////                }
-////            }
-////        }
-////
-////        Assert.assertFalse(c1.hasWin(p1, new int[0]));
-////        Assert.assertTrue(c1.hasWin(p2, new int[0]));
-//    }
+    int num_col = 8;
+    int num_row = 8;
+    int size = 64;
+
+    @Test
+    public void testConstructors() {
+        CheckersGame cg = new CheckersGame();
+        CheckersBoard c = new CheckersBoard(cg);
+        ArrayList<ArrayList<AbstractPiece>> b = c.makeStartBoard(cg);
+
+        testBoard(c, num_col, num_row, size, b);
+    }
+
+    @Test
+    public void testToString() {
+        CheckersGame cg = new CheckersGame();
+        CheckersBoard c1 = new CheckersBoard(cg);
+
+        String s = "|A|B|C|D|E|F|G|H|\n" +
+                "| |x| |x| |x| |x| 8\n" +
+                "|x| |x| |x| |x| | 7\n" +
+                "| |x| |x| |x| |x| 6\n" +
+                "| | | | | | | | | 5\n" +
+                "| | | | | | | | | 4\n" +
+                "|o| |o| |o| |o| | 3\n" +
+                "| |o| |o| |o| |o| 2\n" +
+                "|o| |o| |o| |o| | 1\n";
+
+        Assert.assertEquals(s, c1.toString());
+    }
+
+    @Test
+    public void testMakeStartBoard() {
+        CheckersGame cg = new CheckersGame();
+        CheckersBoard c1 = new CheckersBoard(cg);
+        CheckersPlayer cp1 = new CheckersPlayer(1,
+                "Player 1", c1);
+        CheckersPlayer cp2 = new CheckersPlayer(2,
+                "Player 2", c1);
+
+        ArrayList<ArrayList<AbstractPiece>> a = new ArrayList<>();
+        a.add(0, new ArrayList<>());
+        a.add(1, new ArrayList<>());
+        a.add(2, new ArrayList<>());
+        a.add(3, new ArrayList<>());
+        a.add(4, new ArrayList<>());
+        a.add(5, new ArrayList<>());
+        a.add(6, new ArrayList<>());
+        a.add(7, new ArrayList<>());
+
+        a.get(0).add(0, new NullPiece());
+        a.get(0).add(1, new CheckersPiece("x", c1,
+                new int[] {1,0}, cp1));
+        a.get(0).add(2, new NullPiece());
+        a.get(0).add(3, new CheckersPiece("x", c1,
+                new int[] {1,0}, cp1));
+        a.get(0).add(4, new NullPiece());
+        a.get(0).add(5, new CheckersPiece("x", c1,
+                new int[] {1,0}, cp1));
+        a.get(0).add(6, new NullPiece());
+        a.get(0).add(7, new CheckersPiece("x", c1,
+                new int[] {1,0}, cp1));
+
+        a.get(1).add(0, new CheckersPiece("x", c1,
+                new int[] {1,0}, cp1));
+        a.get(1).add(1, new NullPiece());
+        a.get(1).add(2, new CheckersPiece("x", c1,
+                new int[] {1,0}, cp1));
+        a.get(1).add(3, new NullPiece());
+        a.get(1).add(4, new CheckersPiece("x", c1,
+                new int[] {1,0}, cp1));
+        a.get(1).add(5, new NullPiece());
+        a.get(1).add(6, new CheckersPiece("x", c1,
+                new int[] {1,0}, cp1));
+        a.get(1).add(7, new NullPiece());
+
+        a.get(2).add(0, new NullPiece());
+        a.get(2).add(1, new CheckersPiece("x", c1,
+                new int[] {1,0}, cp1));
+        a.get(2).add(2, new NullPiece());
+        a.get(2).add(3, new CheckersPiece("x", c1,
+                new int[] {1,0}, cp1));
+        a.get(2).add(4, new NullPiece());
+        a.get(2).add(5, new CheckersPiece("x", c1,
+                new int[] {1,0}, cp1));
+        a.get(2).add(6, new NullPiece());
+        a.get(2).add(7, new CheckersPiece("x", c1,
+                new int[] {1,0}, cp1));
+
+        a.get(3).add(0, new NullPiece());
+        a.get(3).add(1, new NullPiece());
+        a.get(3).add(2, new NullPiece());
+        a.get(3).add(3, new NullPiece());
+        a.get(3).add(4, new NullPiece());
+        a.get(3).add(5, new NullPiece());
+        a.get(3).add(6, new NullPiece());
+        a.get(3).add(7, new NullPiece());
+
+        a.get(4).add(0, new NullPiece());
+        a.get(4).add(1, new NullPiece());
+        a.get(4).add(2, new NullPiece());
+        a.get(4).add(3, new NullPiece());
+        a.get(4).add(4, new NullPiece());
+        a.get(4).add(5, new NullPiece());
+        a.get(4).add(6, new NullPiece());
+        a.get(4).add(7, new NullPiece());
+
+        a.get(5).add(0, new CheckersPiece("o", c1,
+                new int[] {0,5}, cp2));
+        a.get(5).add(1, new NullPiece());
+        a.get(5).add(2, new CheckersPiece("o", c1,
+                new int[] {0,5}, cp2));
+        a.get(5).add(3, new NullPiece());
+        a.get(5).add(4, new CheckersPiece("o", c1,
+                new int[] {0,5}, cp2));
+        a.get(5).add(5, new NullPiece());
+        a.get(5).add(6, new CheckersPiece("o", c1,
+                new int[] {0,5}, cp2));
+        a.get(5).add(7, new NullPiece());
+
+        a.get(6).add(0, new NullPiece());
+        a.get(6).add(1, new CheckersPiece("o", c1,
+                new int[] {0,5}, cp2));
+        a.get(6).add(2, new NullPiece());
+        a.get(6).add(3, new CheckersPiece("o", c1,
+                new int[] {0,5}, cp2));
+        a.get(6).add(4, new NullPiece());
+        a.get(6).add(5, new CheckersPiece("o", c1,
+                new int[] {0,5}, cp2));
+        a.get(6).add(6, new NullPiece());
+        a.get(6).add(7, new CheckersPiece("o", c1,
+                new int[] {0,5}, cp2));
+
+        a.get(7).add(0, new CheckersPiece("o", c1,
+                new int[] {0,5}, cp2));
+        a.get(7).add(1, new NullPiece());
+        a.get(7).add(2, new CheckersPiece("o", c1,
+                new int[] {0,5}, cp2));
+        a.get(7).add(3, new NullPiece());
+        a.get(7).add(4, new CheckersPiece("o", c1,
+                new int[] {0,5}, cp2));
+        a.get(7).add(5, new NullPiece());
+        a.get(7).add(6, new CheckersPiece("o", c1,
+                new int[] {0,5}, cp2));
+        a.get(7).add(7, new NullPiece());
+
+        testBoard(c1, a);
+    }
 //
 //    @Test
 //    public void testValidMove() {

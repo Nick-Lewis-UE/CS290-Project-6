@@ -338,26 +338,6 @@ public class CheckersBoardTest extends BoardTest {
 //    }
 //
 //    @Test
-//    public void testFindLocalSimpleMoves() {
-//        CheckersBoard c1 = new CheckersBoard();
-//        AbstractPiece p1 = new AbstractPiece("x");
-//
-//        Assert.assertFalse(c1.findLocalSimpleMoves(new int[] {1,2}, p1).isEmpty());
-//
-//        Assert.assertArrayEquals(new int[] {1,2,2,3},
-//                c1.findLocalSimpleMoves(new int[] {1,2}, p1).get(0));
-//        Assert.assertArrayEquals(new int[] {1,2,0,3},
-//                c1.findLocalSimpleMoves(new int[] {1,2}, p1).get(1));
-//        Assert.assertTrue(c1.findLocalSimpleMoves(new int[] {7,0}, p1).isEmpty());
-//
-//        c1.takeMove(new AbstractPiece("o"), new int[] {4,5,3,4});
-//        c1.takeMove(new AbstractPiece("o"), new int[] {3,4,2,3});
-//
-//        Assert.assertArrayEquals(new int[] {1,2,0,3},
-//                c1.findLocalSimpleMoves(new int[] {1,2}, p1).get(0));
-//    }
-//
-//    @Test
 //    public void testFindAllJumps() {
 //        CheckersBoard b1 = new CheckersBoard();
 //        AbstractPiece p1 = new AbstractPiece("x");
@@ -378,27 +358,6 @@ public class CheckersBoardTest extends BoardTest {
 //        Assert.assertArrayEquals(a.get(1), b1.findAllJumps(p1).get(1));
 //        Assert.assertArrayEquals(a.get(2), b1.findAllJumps(p1).get(2));
 //    }
-//
-//    @Test
-//    public void testFindLocalJumps() {
-//        CheckersBoard c1 = new CheckersBoard();
-//        AbstractPiece p1 = new AbstractPiece("x");
-//
-//        c1.takeMove(new AbstractPiece("x"), new int[] {1,2,2,3});
-//        c1.takeMove(new AbstractPiece("o"), new int[] {4,5,3,4});
-//        int[] me = new int[] {2,3};
-//
-//        ArrayList<int[]> a = new ArrayList<>();
-//        a.add(new int[] {2,3,4,5});
-//
-//        Assert.assertArrayEquals(a.get(0), c1.findLocalJumps(me, p1).get(0));
-//
-//        c1.takeMove(new AbstractPiece("o"), new int[] {0,5,1,4});
-//        a.add(new int[] {2,3,0,5});
-//        Assert.assertArrayEquals(a.get(0), c1.findLocalJumps(me, p1).get(0));
-//        Assert.assertArrayEquals(a.get(1), c1.findLocalJumps(me, p1).get(1));
-//    }
-//
 //    @Test
 //    public void testFindLocalJumps_multipleJumps() {
 //        CheckersBoard c1 = new CheckersBoard();

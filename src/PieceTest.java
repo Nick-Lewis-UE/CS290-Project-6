@@ -1,6 +1,7 @@
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class PieceTest {
@@ -36,5 +37,25 @@ public class PieceTest {
 
         Assert.assertArrayEquals(new int[] {1,2,0,3},
                 p3.findSimpleMoves().get(0));
+    }
+
+    @Test
+    public void testFindJumps() {
+        CheckersGame cg = new CheckersGame();
+
+        cg.getP1().takeMove(new int[] {1,2,2,3});
+        cg.getP2().takeMove(new int[] {4,5,3,4});
+        int[] me = new int[] {2,3};
+        CheckersPiece cp = (CheckersPiece) cg.getBoard().getGrid().get(3).get(2);
+
+        ArrayList<int[]> a = new ArrayList<>();
+        a.add(new int[] {2,3,4,5});
+
+        Assert.assertArrayEquals(a.get(0), cp.findJumps(me).get(0));
+
+        cg.getP2().takeMove(new int[] {0,5,1,4});
+        a.add(new int[] {2,3,0,5});
+        Assert.assertArrayEquals(a.get(0), cp.findJumps(me).get(0));
+        Assert.assertArrayEquals(a.get(1), cp.findJumps(me).get(1));
     }
 }

@@ -1,4 +1,3 @@
-import com.sun.tools.javac.comp.Check;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -18,6 +17,24 @@ public class MoveStrategyTest {
         ArrayList<ArrayList<AbstractPiece>> a1 = BoardTest.makeEmptyBoard(19, 19);
         a1.get(4).set(4, p1);
         BoardTest.testBoard(g1, a1);
+    }
+
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void testIllegalAddGomokuPiece() {
+        GomokuBoard g1 = new GomokuBoard();
+        GomokuPlayer gp1 = new GomokuPlayer(1, "testing", g1);
+        GomokuMoveStrategy gs1 = new GomokuMoveStrategy(gp1);
+        gs1.takeMove(BoardTest.makeLoc(300, 300));
+        gs1.takeMove(BoardTest.makeLoc(-20, -1));
+    }
+
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void testIllegalAddConnect4Piece() {
+        Connect4Board c1 = new Connect4Board(new Connect4Game());
+        Connect4Player cp1 = new Connect4Player(1, "testing", c1);
+        Connect4MoveStrategy cs1 = new Connect4MoveStrategy(cp1);
+        cs1.takeMove(BoardTest.makeLoc(300, 300));
+        cs1.takeMove(BoardTest.makeLoc(-5, 3));
     }
 
     @Test

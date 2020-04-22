@@ -17,28 +17,6 @@ public class CheckersBoardTest extends BoardTest {
 //        testBoard(c, num_col, num_row, size, b);
 //    }
 //
-//    @Test
-//    public void testTakeMove() {
-//        CheckersBoard c = new CheckersBoard();
-//        CheckersPlayer p1 = new CheckersPlayer(1, "who", c);
-//        CheckersPlayer p2 = new CheckersPlayer(2, "where", c);
-//
-//        p1.takeMove(new int[] {1,2,2,3});
-//        p2.takeMove(new int[] {4,5,3,4});
-//        p2.takeMove(new int[] {6,5,7,4});
-//        p2.takeMove(new int[] {7,6,6,5});
-//        p2.takeMove(new int[] {6,7,7,6});
-//        p1.takeMove(new int[] {2,3,4,5,6,7});
-//
-//        ArrayList<ArrayList<AbstractPiece>> g = c.makeStartBoard();
-//        g.get(2).set(1, new NullPiece());
-//        g.get(5).set(4, new NullPiece());
-//        g.get(6).set(5, new NullPiece());
-//        g.get(4).set(7, new CheckersPiece("o"));
-//        g.get(7).set(6, new CheckersPiece("X"));
-//
-//        testBoard(c, g);
-//    }
 //
 //    @Test
 //    public void testToString() {

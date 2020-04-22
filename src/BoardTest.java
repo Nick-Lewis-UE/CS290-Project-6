@@ -43,7 +43,7 @@ public class BoardTest {
         return a;
     }
 
-    private int[] makeLoc(int col, int row) {
+    public static int[] makeLoc(int col, int row) {
         int[] loc = new int[2];
         loc[0] = col;
         loc[1] = row;
@@ -75,18 +75,6 @@ public class BoardTest {
         GomokuBoard g1 = new GomokuBoard();
         g1.toString();
     }
-
-//    @Test(expected = IndexOutOfBoundsException.class)
-//    public void testIllegalAddPiece() {
-//        GomokuBoard g1 = new GomokuBoard();
-//        AbstractPiece p1 = new AbstractPiece("x");
-//        g1.takeMove(p1, makeLoc(300, 300));
-//        g1.takeMove(p1, makeLoc(-20, -1));
-//
-//        Connect4Board c1 = new Connect4Board();
-//        c1.takeMove(p1, makeLoc(300, 300));
-//        c1.takeMove(p1, makeLoc(-5, 3));
-//    }
 
 //    @Test
 //    public void testJustWon() {

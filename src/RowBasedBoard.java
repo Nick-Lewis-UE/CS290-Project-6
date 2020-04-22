@@ -84,7 +84,7 @@ public abstract class RowBasedBoard extends AbstractBoard {
         for (int i = 0; i < num_row; i++) {
             a.add(i, new ArrayList<>());
             for (int j = 0; j < num_col; j++) {
-                a.get(i).add(j, new NullPiece());
+                a.get(i).add(j, new NullPiece(this, new int[] {j}));
             }
         }
         return a;

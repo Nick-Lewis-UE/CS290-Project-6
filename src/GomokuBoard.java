@@ -15,7 +15,7 @@ public class GomokuBoard extends RowBasedBoard {
         for (int i = 0; i < num_row; i++) {
             grid.add(i, new ArrayList<>());
             for (int j = 0; j < num_col; j++) {
-                grid.get(i).add(j, new NullPiece());
+                grid.get(i).add(j, new NullPiece(this, new int[] {j,i}));
             }
         }
         this.grid = grid;

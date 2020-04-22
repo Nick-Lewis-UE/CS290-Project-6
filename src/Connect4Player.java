@@ -4,5 +4,10 @@ public class Connect4Player extends PlacingPlayer{
         super(playerNum, name, board);
         this.needToWin = 4;
         this.moveStrat = new Connect4MoveStrategy(this);
+        if (playerNum == 1) {
+            this.piece = new Connect4Piece("x", getBoard(), new int[0], this);
+        } else {
+            this.piece = new CheckersPiece("o", getBoard(), new int[0], this);
+        }
     }
 }

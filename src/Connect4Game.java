@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Connect4Game extends AbstractGame{
 
     public Connect4Game() {
-        this.setBoard(new Connect4Board());
+        this.setBoard(new Connect4Board(this));
         this.setP1(new Connect4Player(1, "Player 1", this.board));
         this.setP2(new Connect4Player(2, "Player 2", this.board));
     }

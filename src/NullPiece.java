@@ -1,6 +1,6 @@
 public class NullPiece extends AbstractPiece {
     public NullPiece(AbstractBoard board, int[] location) {
-        super(" ", board, location, null);
+        super(" ", board, location, new NullPlayer(board));
     }
 
     public boolean equals(String s) {

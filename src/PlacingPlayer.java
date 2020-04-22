@@ -4,18 +4,13 @@ public class PlacingPlayer extends AbstractPlayer {
     public PlacingPlayer(int playerNum, String name,
                          AbstractBoard board) {
         super(playerNum, name, board);
-        if (playerNum == 1) {
-            this.piece = new AbstractPiece("x");
-        } else {
-            this.piece = new AbstractPiece("o");
-        }
     }
 
     protected AbstractPiece piece;
     protected int needToWin;
 
     public boolean hasWin(int[] loc) {
-        // not working
+        // horizontal win
         for (int j = 1; j <= board.getNum_row(); j++) {
             if (checkHorizontalWin(j))
                 return true;

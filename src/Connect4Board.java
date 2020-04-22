@@ -1,11 +1,11 @@
 public class Connect4Board extends RowBasedBoard {
 
-    public Connect4Board() {
+    public Connect4Board(AbstractGame game) {
         this.num_col = 7;
         this.num_row = 6;
         this.size = 42;
         this.needToWin = 4;
-        this.grid = makeStartBoard();
+        this.grid = makeStartBoard(game);
     }
 
     public void takeMove(AbstractPiece p, int[] move) {

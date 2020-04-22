@@ -10,6 +10,12 @@ public abstract class AbstractPlayer {
         this.board = board;
     }
 
+    public AbstractPlayer(int playerNum, String name) {
+        this.playerNum = playerNum;
+        this.name = name;
+        this.winMessage = "Congratulations, " + name + "! You won!";
+    }
+
     protected int playerNum;
     protected String name;
     protected String winMessage;
@@ -30,6 +36,10 @@ public abstract class AbstractPlayer {
 
     public AbstractBoard getBoard() {
         return board;
+    }
+
+    public void setBoard(AbstractBoard board) {
+        this.board = board;
     }
 
     public void takeMove(int[] move) {

@@ -40,19 +40,22 @@ public class PlayerTest {
     }
 
     @Test
-    public void testHasWin() {
+    public void testGomokuHasWin() {
         GomokuBoard g1 = new GomokuBoard();
         GomokuPlayer player1 = new GomokuPlayer(1, "nick", g1);
         GomokuMoveStrategy gs1 = new GomokuMoveStrategy(player1);
 
-        gs1.takeMove(BoardTest.makeLoc(1,1));
-        gs1.takeMove(BoardTest.makeLoc(1,2));
-        gs1.takeMove(BoardTest.makeLoc(1,3));
-        gs1.takeMove(BoardTest.makeLoc(1,4));
-        gs1.takeMove(BoardTest.makeLoc(1,5));
+        gs1.takeMove(BoardTest.makeLoc(1, 1));
+        gs1.takeMove(BoardTest.makeLoc(1, 2));
+        gs1.takeMove(BoardTest.makeLoc(1, 3));
+        gs1.takeMove(BoardTest.makeLoc(1, 4));
+        gs1.takeMove(BoardTest.makeLoc(1, 5));
 
-        Assert.assertEquals(true, player1.hasWin(BoardTest.makeLoc(1,1)));
+        Assert.assertEquals(true, player1.hasWin(BoardTest.makeLoc(1, 1)));
+    }
 
+    @Test
+    public void testConnect4HasWin() {
         GomokuBoard g2 = new GomokuBoard();
         GomokuPlayer player2 = new GomokuPlayer(1, "not nick", g2);
         GomokuMoveStrategy gs2 = new GomokuMoveStrategy(player2);
@@ -63,6 +66,24 @@ public class PlayerTest {
         gs2.takeMove(BoardTest.makeLoc(9,2));
 
         Assert.assertEquals(true, player2.hasWin(BoardTest.makeLoc(7,2)));
+    }
 
+    @Test
+    public void testCheckersHasWin() {
+        CheckersGame cg = new CheckersGame();
+        CheckersBoard c1 = new CheckersBoard(cg);
+        CheckersPlayer p1 = new CheckersPlayer(1, "Nick", c1);
+        CheckersPlayer p2 = new CheckersPlayer(2, "Not Nick", c1);
+
+        for (int i = 0; i < c1.getGrid().size(); i++) {
+            for (int j = 0; j < c1.getGrid().get(0).size(); j++) {
+                if (c1.getGrid().get(i).get(j).getSymbol().equals("x")) {
+                    c1.getGrid().get(i).set(j, new NullPiece());
+                }
+            }
+        }
+
+        Assert.assertFalse(p1.hasWin(new int[0]));
+        Assert.assertTrue(p2.hasWin(new int[0]));
     }
 }

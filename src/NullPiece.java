@@ -4,7 +4,7 @@ public class NullPiece extends AbstractPiece {
     }
 
     protected NullPiece() {
-        super(" ", null, new int[0], null);
+        super(" ", null, new int[0], new NullPlayer(null));
     }
     public boolean equals(String s) {
         return false;

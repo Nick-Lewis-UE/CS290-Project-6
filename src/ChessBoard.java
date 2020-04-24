@@ -50,7 +50,7 @@ public class ChessBoard extends MovingBoard {
 
     @Override
     public boolean validMove(int[] move, AbstractPlayer p) {
-        return false;
+        return true;
     }
 
     @Override

@@ -2,6 +2,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class PieceTest {
     private void testPiece(AbstractPiece p, String symbol,
@@ -109,5 +110,30 @@ public class PieceTest {
         Assert.assertArrayEquals(a.get(0), p1.findJumps(new int[] {3,2}).get(0));
         Assert.assertTrue(cg.getBoard().validMove(a.get(0),cg.getP1()));
 
+    }
+
+    @Test
+    public void testKnightPieceGenerateMoves() {
+        ChessGame cg = new ChessGame();
+        ChessBoard cb = new ChessBoard(cg);
+
+        ArrayList<int[]> moves = cb.getGrid().get(0).get(1).generateMoves();
+        ArrayList<int[]> expected = new ArrayList<>();
+        expected.add(new int[] {1,0,2,2});
+        expected.add(new int[] {1,0,0,2});
+
+        for (int i = 0; i < moves.size(); i++) {
+            Assert.assertArrayEquals(expected.get(i), moves.get(i));
+        }
+    }
+
+    @Test
+    public void testKingPieceGenerateMoves() {
+        ChessGame cg = new ChessGame();
+        ChessBoard cb = new ChessBoard(cg);
+
+        ArrayList<int[]> moves = cb.getGrid().get(0).get(4).generateMoves();
+
+        Assert.assertTrue(moves.isEmpty());
     }
 }

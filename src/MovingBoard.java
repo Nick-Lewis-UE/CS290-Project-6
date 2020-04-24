@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class MovingBoard extends AbstractBoard {
+public abstract class MovingBoard extends AbstractBoard {
     public MovingBoard(AbstractGame game) {
         this.num_col = 8;
         this.num_row = 8;
@@ -27,11 +27,6 @@ public class MovingBoard extends AbstractBoard {
         }
 
         return board.toString();
-    }
-
-    @Override
-    protected ArrayList<ArrayList<AbstractPiece>> makeStartBoard(AbstractGame game) {
-        return null;
     }
 
     @Override

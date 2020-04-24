@@ -15,8 +15,8 @@ public class BoardTest {
         }
     }
 
-    public void testBoard(AbstractBoard b, int num_col, int num_row, int size,
-                             ArrayList<ArrayList<AbstractPiece>> grid) {
+    public static void testBoard(AbstractBoard b, int num_col, int num_row, int size,
+                                 ArrayList<ArrayList<AbstractPiece>> grid) {
 //        System.out.println("Grid Size: " + grid.size());
         for (int i = 0; i < b.getNum_row(); i++) {
 //            System.out.println(b.getGrid().get(i).getSymbol());

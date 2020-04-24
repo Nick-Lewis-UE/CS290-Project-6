@@ -3,6 +3,12 @@ public class ChessPlayer extends AbstractPlayer {
         super(playerNum, name);
     }
 
+    public ChessPlayer(int playerNum, String name,
+                          AbstractBoard board) {
+        super(playerNum, name, board);
+        this.moveStrat = new CheckersMoveStrategy(this);
+    }
+
     @Override
     public boolean hasWon(int[] loc) {
         return false;

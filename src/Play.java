@@ -16,6 +16,7 @@ public class Play {
         System.out.println("Type 1 for Connect 4");
         System.out.println("Type 2 for Gomoku");
         System.out.println("Type 3 for Checkers");
+        System.out.println("Type 4 for Chess");
         String pick = scan.nextLine();
 
         if (pick.equals("1")) {
@@ -24,6 +25,8 @@ public class Play {
             return new GomokuGame();
         } else if (pick.equals("3")) {
             return new CheckersGame();
+        } else if (pick.equals("4")) {
+            return new ChessGame();
         } else {
             System.out.println("Invalid input, try again please.");
             return startup(scan);

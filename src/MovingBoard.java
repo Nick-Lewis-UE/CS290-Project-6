@@ -1,6 +1,13 @@
 import java.util.ArrayList;
 
 public class MovingBoard extends AbstractBoard {
+    public MovingBoard(AbstractGame game) {
+        this.num_col = 8;
+        this.num_row = 8;
+        this.size = 64;
+        this.grid = makeStartBoard(game);
+        this.game = game;
+    }
 
     @Override
     public String toString() {

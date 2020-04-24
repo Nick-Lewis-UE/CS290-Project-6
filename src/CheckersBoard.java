@@ -1,17 +1,12 @@
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.stream.Stream;
 
 import static java.lang.Math.abs;
 
 public class CheckersBoard extends MovingBoard {
 
-    public CheckersBoard(AbstractGame game) {
-        this.num_col = 8;
-        this.num_row = 8;
-        this.size = 64;
-        this.grid = makeStartBoard(game);
-        this.game = game;
+    public CheckersBoard(CheckersGame game) {
+        super(game);
     }
 
     @Override

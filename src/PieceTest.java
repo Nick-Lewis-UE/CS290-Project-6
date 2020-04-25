@@ -136,4 +136,31 @@ public class PieceTest {
 
         Assert.assertTrue(moves.isEmpty());
     }
+
+    @Test
+    public void testPawnPieceGenerateMoves(){
+        ChessGame cg = new ChessGame();
+        ChessBoard cb = new ChessBoard(cg);
+
+        ArrayList<int[]> moves = cb.getGrid().get(1).get(3).generateMoves();
+
+        ArrayList <int[]> a = new ArrayList<>();
+        a.add(new int[] {3,1,3,2});
+        a.add(new int[] {3,1,3,3});
+
+        for (int i=0; i < moves.size(); i++) {
+//            System.out.println(Arrays.toString(moves.get(i)));
+            Assert.assertArrayEquals(a.get(i), moves.get(i));
+        }
+
+        ArrayList<int[]> moves2 = cb.getGrid().get(6).get(2).generateMoves();
+        ArrayList <int[]> a2 = new ArrayList<>();
+        a2.add(new int[] {2,6,2,5});
+        a2.add(new int[] {2,6,2,4});
+
+        for (int i=0; i < moves.size(); i++) {
+//            System.out.println(Arrays.toString(moves2.get(i)));
+            Assert.assertArrayEquals(a2.get(i), moves2.get(i));
+        }
+    }
 }

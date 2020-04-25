@@ -172,4 +172,24 @@ public class PieceTest {
         ArrayList<int[]> moves = cb.getGrid().get(0).get(0).generateMoves();
         Assert.assertTrue(moves.isEmpty());
     }
+
+    @Test
+    public void testQueenPieceGenerateMoves() {
+        ChessGame cg = new ChessGame();
+
+        ArrayList<int[]> moves = cg.getBoard().getGrid().
+                get(0).get(3).generateMoves();
+
+        Assert.assertTrue(moves.isEmpty());
+    }
+
+    @Test
+    public void testBishopPieceGenerateMoves() {
+        ChessGame cg = new ChessGame();
+
+        ArrayList<int[]> moves = cg.getBoard().getGrid().
+                get(0).get(2).generateMoves();
+
+        Assert.assertTrue(moves.isEmpty());
+    }
 }

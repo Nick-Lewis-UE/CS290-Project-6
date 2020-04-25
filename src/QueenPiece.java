@@ -1,5 +1,14 @@
+import java.util.ArrayList;
+
 public class QueenPiece extends AbstractPiece {
     public QueenPiece(String q, ChessBoard chessBoard, int[] ints, AbstractPlayer p1) {
         super(q, chessBoard, ints, p1);
+    }
+
+    protected int[] rowAdds = new int[] {1,1,1,0,-1,-1,-1,0};
+    protected int[] colAdds = new int[] {1,0,-1,-1,-1,0,1,1};
+
+    public ArrayList<int[]> generateMoves() {
+        return generateChessMultiMove(rowAdds, colAdds);
     }
 }

@@ -163,4 +163,13 @@ public class PieceTest {
             Assert.assertArrayEquals(a2.get(i), moves2.get(i));
         }
     }
+
+    @Test
+    public void testRookPieceGenerateMoves() {
+        ChessGame cg = new ChessGame();
+        ChessBoard cb = (ChessBoard) cg.getBoard();
+
+        ArrayList<int[]> moves = cb.getGrid().get(0).get(0).generateMoves();
+        Assert.assertTrue(moves.isEmpty());
+    }
 }

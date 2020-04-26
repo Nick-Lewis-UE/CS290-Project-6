@@ -1,6 +1,8 @@
+import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class ChessBoardTest {
     int num_col = 8;
@@ -141,5 +143,18 @@ public class ChessBoardTest {
                 new int[] {7,7}, cp1));
 
         BoardTest.testBoard(c1, a);
+    }
+
+    @Test
+    public void testValidMove() {
+        ChessGame cg = new ChessGame();
+        ChessBoard cb = (ChessBoard) cg.getBoard();
+
+        Assert.assertTrue(cb.validMove(new int[] {3,1,3,2}, cg.getP1()));
+        Assert.assertTrue(cb.validMove(new int[] {0,1,0,2}, cg.getP1()));
+        Assert.assertTrue(cb.validMove(new int[] {7,1,7,2}, cg.getP1()));
+        Assert.assertTrue(cb.validMove(new int[] {0,6,0,5}, cg.getP2()));
+        Assert.assertTrue(cb.validMove(new int[] {3,6,3,5}, cg.getP2()));
+        Assert.assertTrue(cb.validMove(new int[] {7,6,7,5}, cg.getP2()));
     }
 }

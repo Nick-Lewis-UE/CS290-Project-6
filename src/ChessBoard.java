@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class ChessBoard extends MovingBoard {
     public ChessBoard(ChessGame game) {
@@ -50,7 +51,24 @@ public class ChessBoard extends MovingBoard {
 
     @Override
     public boolean validMove(int[] move, AbstractPlayer p) {
-        return true;
+        ArrayList<int[]> legalMoves = new ArrayList<>();
+
+        for (int r = 0; r <(getGrid()).size(); r++) {
+            for (int c = 0; c <(getGrid()).get(r).size(); c++) {
+                if (getGrid().get(r).get(c).getPlayer().getPlayerNum() == p.getPlayerNum()) {
+                    try {
+                        legalMoves.addAll(getGrid().get(r).get(c).generateMoves());
+                    } catch (IndexOutOfBoundsException ignored) {}
+                }
+            }
+        }
+
+        for (int[] each : legalMoves) {
+            if (Arrays.equals(each, move))
+                return true;
+        }
+
+        return false;
     }
 
     @Override

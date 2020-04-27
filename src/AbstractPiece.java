@@ -92,4 +92,12 @@ public abstract class AbstractPiece {
 
         return moves;
     }
+
+    protected boolean inBounds(int col, int row) {
+        return col < board.getNum_col() &&
+                row < board.getNum_row() &&
+                col >= 0 &&
+                row >= 0;
+
+    }
 }

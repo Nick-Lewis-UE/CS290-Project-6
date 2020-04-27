@@ -30,7 +30,11 @@ public abstract class AbstractBoard {
 
     protected abstract ArrayList<ArrayList<AbstractPiece>> makeStartBoard(AbstractGame game);
 
-    public abstract boolean validMove(int[] move, AbstractPlayer p);
+    public abstract boolean validMove(int[] move);
 
     public abstract boolean hasTie();
+
+    public AbstractGame getGame() {
+        return game;
+    }
 }

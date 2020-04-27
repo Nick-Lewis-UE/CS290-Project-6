@@ -25,7 +25,7 @@ public class Connect4Board extends PlacingBoard {
         return board.toString();
     }
 
-    public boolean validMove(int[] move, AbstractPlayer p) {
+    public boolean validMove(int[] move) {
         return (move[0] <= 0 || move[0] > num_col ||
                 !grid.get(0).get(move[0] - 1).isEmpty());
     }

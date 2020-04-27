@@ -33,8 +33,8 @@ public class CheckersBoard extends MovingBoard {
     }
 
     @Override
-    public boolean validMove(int[] move, AbstractPlayer p) {
-        ArrayList<int[]> moves = findLegalMoves(p);
+    public boolean validMove(int[] move) {
+        ArrayList<int[]> moves = findLegalMoves(game.getTurn());
 
         for (int[] each : moves) {
             if (Arrays.equals(each, move))

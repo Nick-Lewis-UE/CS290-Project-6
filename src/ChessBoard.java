@@ -50,12 +50,87 @@ public class ChessBoard extends MovingBoard {
     }
 
     @Override
-    public boolean validMove(int[] move, AbstractPlayer p) {
+    public boolean validMove(int[] move) {
         ArrayList<int[]> legalMoves = new ArrayList<>();
+
+        if (check()) {
+            for (int r = 0; r <(getGrid()).size(); r++) {
+                for (int c = 0; c <(getGrid()).get(r).size(); c++) {
+                    if (getGrid().get(r).get(c).getPlayer().getPlayerNum() == game.getTurn().getPlayerNum() &&
+                        getGrid().get(r).get(c).getSymbol().toLowerCase().equals("k")) {
+                        legalMoves.addAll(getGrid().get(r).get(c).generateMoves());
+
+                        for (int i=0; i < legalMoves.size(); i++) {
+                            if (moveToCheck(legalMoves.get(i)[2], legalMoves.get(i)[3])) {
+                                legalMoves.remove(i);
+                            }
+                        }
+                    }
+                }
+            }
+        } else {
+            for (int r = 0; r < (getGrid()).size(); r++) {
+                for (int c = 0; c < (getGrid()).get(r).size(); c++) {
+                    if (getGrid().get(r).get(c).getPlayer().getPlayerNum() == game.getTurn().getPlayerNum()) {
+                        legalMoves.addAll(getGrid().get(r).get(c).generateMoves());
+                    }
+                }
+            }
+        }
+
+        for (int[] each : legalMoves) {
+            if (Arrays.equals(each, move))
+                return true;
+        }
+
+        return false;
+    }
+
+    private boolean check() {
+        ArrayList<int[]> legalMoves = new ArrayList<>();
+        AbstractPlayer otherPlayer;
+        int[] turnsKing = new int[0];
+
+        if (game.getTurn() == game.getP1())
+            otherPlayer = game.getP2();
+        else
+            otherPlayer = game.getP1();
 
         for (int r = 0; r <(getGrid()).size(); r++) {
             for (int c = 0; c <(getGrid()).get(r).size(); c++) {
-                if (getGrid().get(r).get(c).getPlayer().getPlayerNum() == p.getPlayerNum()) {
+                if (getGrid().get(r).get(c).getPlayer().getPlayerNum() == otherPlayer.getPlayerNum()) {
+                    try {
+                        legalMoves.addAll(getGrid().get(r).get(c).generateMoves());
+                    } catch (IndexOutOfBoundsException ignored) {}
+                }
+                if (getGrid().get(r).get(c).getPlayer().getPlayerNum() == game.getTurn().getPlayerNum() &&
+                        getGrid().get(r).get(c).getSymbol().toLowerCase().equals("k")) {
+                    turnsKing = new int[]{c, r};
+                }
+
+            }
+        }
+
+        for (int[] each : legalMoves) {
+            if (each[2] == turnsKing[0] && each[3] == turnsKing[1])
+                return true;
+        }
+
+        return false;
+    }
+
+    private boolean moveToCheck(int col, int row) {
+        ArrayList<int[]> legalMoves = new ArrayList<>();
+        AbstractPlayer otherPlayer;
+
+        if (game.getTurn() == game.getP1())
+            otherPlayer = game.getP2();
+        else
+            otherPlayer = game.getP1();
+
+        for (int r = 0; r <(getGrid()).size(); r++) {
+            for (int c = 0; c <(getGrid()).get(r).size(); c++) {
+                if (getGrid().get(r).get(c).getPlayer().getPlayerNum() == otherPlayer.getPlayerNum()) {
                     try {
                         legalMoves.addAll(getGrid().get(r).get(c).generateMoves());
                     } catch (IndexOutOfBoundsException ignored) {}
@@ -63,8 +138,9 @@ public class ChessBoard extends MovingBoard {
             }
         }
 
+
         for (int[] each : legalMoves) {
-            if (Arrays.equals(each, move))
+            if (each[2] == col && each[3] == row)
                 return true;
         }
 

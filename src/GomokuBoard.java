@@ -48,7 +48,7 @@ public class GomokuBoard extends PlacingBoard {
         return board.toString();
     }
 
-    public boolean validMove(int[] move, AbstractPlayer p) {
+    public boolean validMove(int[] move) {
         return (move[1] > num_row || move[1] <= 0 || move[0] <= 0 || move[0] > num_col ||
                 !grid.get(move[1] - 1).get(move[0] - 1).isEmpty());
     }

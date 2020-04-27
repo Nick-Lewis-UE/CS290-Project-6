@@ -108,7 +108,7 @@ public class PieceTest {
 
         Assert.assertEquals(1, p1.findJumps(new int[] {3,2}).size());
         Assert.assertArrayEquals(a.get(0), p1.findJumps(new int[] {3,2}).get(0));
-        Assert.assertTrue(cg.getBoard().validMove(a.get(0),cg.getP1()));
+        Assert.assertTrue(cg.getBoard().validMove(a.get(0)));
 
     }
 
@@ -139,11 +139,22 @@ public class PieceTest {
     @Test
     public void testKingPieceGenerateMoves() {
         ChessGame cg = new ChessGame();
-        ChessBoard cb = new ChessBoard(cg);
 
-        ArrayList<int[]> moves = cb.getGrid().get(0).get(4).generateMoves();
+        ArrayList<int[]> moves = cg.getBoard().getGrid().get(0).get(4).generateMoves();
 
         Assert.assertTrue(moves.isEmpty());
+        Assert.assertTrue(cg.getBoard().getGrid().get(7).get(4).generateMoves().isEmpty());
+        cg.getP1().takeMove(new int[] {4,0,4,3});
+
+        Assert.assertEquals(8, cg.getBoard().getGrid().get(3).get(4).generateMoves().size());
+        cg.getP2().takeMove(new int[] {4,6,1,0});
+        Assert.assertEquals(1, cg.getBoard().getGrid().get(7).get(4).generateMoves().size());
+
+        cg.getP1().takeMove(new int[] {4,3,4,5});
+        cg.getP2().takeMove(new int[] {4,7,4,6});
+        System.out.println(cg.getBoard().toString());
+        Assert.assertEquals(5, cg.getBoard().getGrid().get(5).get(4).generateMoves().size());
+
     }
 
     @Test

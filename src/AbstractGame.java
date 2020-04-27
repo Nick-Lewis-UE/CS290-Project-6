@@ -63,6 +63,14 @@ public abstract class AbstractGame {
         return p2;
     }
 
+    public AbstractPlayer getTurn() {
+        return turn;
+    }
+
+    protected void setTurn(AbstractPlayer player) {
+        turn = player;
+    }
+
     public void setP2(AbstractPlayer p2) {
         this.p2 = p2;
     }

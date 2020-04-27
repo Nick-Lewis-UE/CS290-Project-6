@@ -1,12 +1,10 @@
-import java.util.ArrayList;
-
 public abstract class MovingBoard extends AbstractBoard {
     public MovingBoard(AbstractGame game) {
         this.num_col = 8;
         this.num_row = 8;
         this.size = 64;
-        this.grid = makeStartBoard(game);
         this.game = game;
+        this.grid = makeStartBoard(game);
     }
 
     @Override
@@ -30,7 +28,7 @@ public abstract class MovingBoard extends AbstractBoard {
     }
 
     @Override
-    public boolean validMove(int[] move, AbstractPlayer p) {
+    public boolean validMove(int[] move) {
         return false;
     }
 

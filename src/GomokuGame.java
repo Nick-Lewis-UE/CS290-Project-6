@@ -19,7 +19,7 @@ public class GomokuGame extends AbstractGame {
 
         int[] move = new int[] {col, row};
 
-        if (board.validMove(move, turn)) {
+        if (board.validMove(move)) {
             System.out.println("Invalid row/column. Please try again.");
             return scanForMove();
         }

@@ -16,7 +16,7 @@ public class Connect4Game extends AbstractGame{
         move[0] = scan.nextInt();
 
 
-        if (board.validMove(move, turn)) {
+        if (board.validMove(move)) {
             System.out.println("Invalid column. Please try again.");
             return scanForMove();
         }

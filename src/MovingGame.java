@@ -6,7 +6,7 @@ public class MovingGame extends AbstractGame {
     public int[] scanForMove() { // returns in index format (0..7)
         int[] move = collectMove();
 
-        if (!board.validMove(move, turn)) {
+        if (!board.validMove(move)) {
             System.out.println("Invalid move. Please try again.");
             return scanForMove();
         }

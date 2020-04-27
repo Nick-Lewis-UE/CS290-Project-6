@@ -2,7 +2,6 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class ChessBoardTest {
     int num_col = 8;
@@ -150,22 +149,28 @@ public class ChessBoardTest {
         ChessGame cg = new ChessGame();
         ChessBoard cb = (ChessBoard) cg.getBoard();
 
-        Assert.assertTrue(cb.validMove(new int[] {3,1,3,2}, cg.getP1()));
-        Assert.assertTrue(cb.validMove(new int[] {0,1,0,2}, cg.getP1()));
-        Assert.assertTrue(cb.validMove(new int[] {7,1,7,2}, cg.getP1()));
-        Assert.assertTrue(cb.validMove(new int[] {0,6,0,5}, cg.getP2()));
-        Assert.assertTrue(cb.validMove(new int[] {3,6,3,5}, cg.getP2()));
-        Assert.assertTrue(cb.validMove(new int[] {7,6,7,5}, cg.getP2()));
+        Assert.assertTrue(cb.validMove(new int[] {3,1,3,2}));
+        Assert.assertTrue(cb.validMove(new int[] {0,1,0,2}));
+        Assert.assertTrue(cb.validMove(new int[] {7,1,7,2}));
+        cg.setTurn(cg.getP2());
+        Assert.assertTrue(cb.validMove(new int[] {0,6,0,5}));
+        Assert.assertTrue(cb.validMove(new int[] {3,6,3,5}));
+        Assert.assertTrue(cb.validMove(new int[] {7,6,7,5}));
 
+        cg.setTurn(cg.getP1());
         cg.getP1().getMoveStrat().takeMove(new int[] {0,1,0,2});
-        Assert.assertTrue(cb.validMove(new int[] {0,0,0,1}, cg.getP1()));
-        Assert.assertTrue(cb.validMove(new int[] {0,2,0,3}, cg.getP1()));
+        Assert.assertTrue(cb.validMove(new int[] {0,0,0,1}));
+        Assert.assertTrue(cb.validMove(new int[] {0,2,0,3}));
 
         cg.getP2().getMoveStrat().takeMove(new int[] {1,6,1,3});
-        Assert.assertTrue(cb.validMove(new int[] {0,2,1,3}, cg.getP1()));
-        Assert.assertTrue(cb.validMove(new int[] {1,3,0,2}, cg.getP2()));
+        Assert.assertTrue(cb.validMove(new int[] {0,2,1,3}));
+        cg.setTurn(cg.getP2());
+        Assert.assertTrue(cb.validMove(new int[] {1,3,0,2}));
+        Assert.assertTrue(cb.validMove(new int[] {6,7,7,5}));
+        cg.getP1().takeMove(new int[] {4,0,4,5});
 
-        Assert.assertTrue(cb.validMove(new int[] {6,7,7,5}, cg.getP2()));
-
+        cg.setTurn(cg.getP1());
+        Assert.assertTrue(cb.validMove(new int[] {4,5,4,4}));
+        Assert.assertFalse(cb.validMove(new int[] {4,5,3,5}));
     }
 }

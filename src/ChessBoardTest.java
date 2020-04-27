@@ -156,5 +156,16 @@ public class ChessBoardTest {
         Assert.assertTrue(cb.validMove(new int[] {0,6,0,5}, cg.getP2()));
         Assert.assertTrue(cb.validMove(new int[] {3,6,3,5}, cg.getP2()));
         Assert.assertTrue(cb.validMove(new int[] {7,6,7,5}, cg.getP2()));
+
+        cg.getP1().getMoveStrat().takeMove(new int[] {0,1,0,2});
+        Assert.assertTrue(cb.validMove(new int[] {0,0,0,1}, cg.getP1()));
+        Assert.assertTrue(cb.validMove(new int[] {0,2,0,3}, cg.getP1()));
+
+        cg.getP2().getMoveStrat().takeMove(new int[] {1,6,1,3});
+        Assert.assertTrue(cb.validMove(new int[] {0,2,1,3}, cg.getP1()));
+        Assert.assertTrue(cb.validMove(new int[] {1,3,0,2}, cg.getP2()));
+
+        Assert.assertTrue(cb.validMove(new int[] {6,7,7,5}, cg.getP2()));
+
     }
 }

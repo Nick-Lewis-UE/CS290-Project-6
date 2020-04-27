@@ -11,8 +11,11 @@ public class KnightPiece extends AbstractPiece {
     public ArrayList<int[]> generateMoves() {
             ArrayList<int[]> moves = new ArrayList<>();
 
-        try {
-            for (int i = 0; i < rowAdds.length; i++) {
+        for (int i = 0; i < rowAdds.length; i++) {
+            if (((location[1] + rowAdds[i]) < board.getNum_row()) &&
+                    ((location[0] + colAdds[i]) < board.getNum_col()) &&
+                    ((location[0] + colAdds[i]) >= 0) &&
+                    ((location[1] + rowAdds[i]) >= 0)) {
                 if (board.getGrid().get(location[1] + rowAdds[i]).
                         get(location[0] + colAdds[i]).getPlayer().getPlayerNum() != player.getPlayerNum())
                     moves.add(new int[]{location[0],
@@ -20,7 +23,7 @@ public class KnightPiece extends AbstractPiece {
                             location[0] + colAdds[i],
                             location[1] + rowAdds[i]});
             }
-        } catch(IndexOutOfBoundsException ignored) {}
+        }
 
         return moves;
     }

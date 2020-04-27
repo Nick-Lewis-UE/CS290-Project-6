@@ -9,7 +9,6 @@ public class PawnPiece extends AbstractPiece {
         ArrayList<int[]> a = new ArrayList<>();
 
         if (player.getPlayerNum() == 1) {
-            try {
                 if (board.getGrid().get(location[1] + 1).get(location[0]).isEmpty()) {
                     a.add(new int[]{location[0], location[1], location[0], location[1] + 1});
 
@@ -19,14 +18,18 @@ public class PawnPiece extends AbstractPiece {
                     }
                 }
 
-                if (board.getGrid().get(location[1] + 1).get(location[0] + 1).getPlayer().getPlayerNum() == 2) {
-                    a.add(new int[]{location[0], location[1], location[0] + 1, location[0] + 1});
-                }
+                try {
+                    if (board.getGrid().get(location[1] + 1).get(location[0] + 1).getPlayer().getPlayerNum() == 2) {
+                        a.add(new int[]{location[0], location[1], location[0] + 1, location[1] + 1});
+                    }
+                } catch (IndexOutOfBoundsException ignored) {}
 
-                if (board.getGrid().get(location[1] + 1).get(location[0] - 1).getPlayer().getPlayerNum() == 2) {
-                    a.add(new int[]{location[0], location[1], location[0] - 1, location[0] + 1});
-                }
-            } catch (IndexOutOfBoundsException ignored) {}
+                try {
+                    if (board.getGrid().get(location[1] + 1).get(location[0] - 1).getPlayer().getPlayerNum() == 2) {
+                        a.add(new int[]{location[0], location[1], location[0] - 1, location[1] + 1});
+                    }
+                } catch (IndexOutOfBoundsException ignored) {}
+
         } else if (player.getPlayerNum() == 2) {
             try {
                 if (board.getGrid().get(location[1] - 1).get(location[0]).isEmpty()) {
@@ -38,13 +41,17 @@ public class PawnPiece extends AbstractPiece {
                     }
                 }
 
-                if (board.getGrid().get(location[1] - 1).get(location[0] + 1).getPlayer().getPlayerNum() == 1) {
-                    a.add(new int[]{location[0], location[1], location[0] + 1, location[0] - 1});
-                }
+                try {
+                    if (board.getGrid().get(location[1] - 1).get(location[0] + 1).getPlayer().getPlayerNum() == 1) {
+                        a.add(new int[]{location[0], location[1], location[0] + 1, location[1] - 1});
+                    }
+                } catch (IndexOutOfBoundsException ignored) {}
 
-                if (board.getGrid().get(location[1] - 1).get(location[0] - 1).getPlayer().getPlayerNum() == 1) {
-                    a.add(new int[]{location[0], location[1], location[0] - 1, location[0] - 1});
-                }
+                try {
+                    if (board.getGrid().get(location[1] - 1).get(location[0] - 1).getPlayer().getPlayerNum() == 1) {
+                        a.add(new int[]{location[0], location[1], location[0] - 1, location[1] - 1});
+                    }
+                } catch (IndexOutOfBoundsException ignored) {}
 
             } catch (IndexOutOfBoundsException ignored) {}
         }

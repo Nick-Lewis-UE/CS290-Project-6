@@ -65,20 +65,24 @@ public abstract class AbstractPiece {
                 while (!stop) {
                     nextCol = nextCol + colAdds[i];
                     nextRow = nextRow + rowAdds[i];
-                    int nextPiecePlayerNum = board.getGrid().get(nextRow).
-                            get(nextCol).getPlayer().
-                            getPlayerNum();
 
-                    if (nextCol == board.getNum_col() || nextRow == board.getNum_row())
-                        break;
+                    if (nextCol < board.getNum_col() && nextRow < board.getNum_row() &&
+                    nextCol >= 0 && nextRow >= 0) {
 
-                    if (nextPiecePlayerNum != player.getPlayerNum()) {
-                        moves.add(new int[]{location[0], location[1], nextCol, nextRow});
+                        int nextPiecePlayerNum = board.getGrid().get(nextRow).
+                                get(nextCol).getPlayer().
+                                getPlayerNum();
 
-                        if (nextPiecePlayerNum != 0) {
+
+                        if (nextPiecePlayerNum != player.getPlayerNum()) {
+                            moves.add(new int[]{location[0], location[1], nextCol, nextRow});
+
+                            if (nextPiecePlayerNum != 0) {
+                                stop = true;
+                            }
+                        } else {
                             stop = true;
                         }
-
                     } else {
                         stop = true;
                     }

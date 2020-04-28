@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class KingPiece extends AbstractPiece {
     public KingPiece(String k, ChessBoard chessBoard, int[] ints, AbstractPlayer p1) {
@@ -19,6 +20,26 @@ public class KingPiece extends AbstractPiece {
                             location[1],
                             location[0] + colAdds[i],
                             location[1] + rowAdds[i]});
+            }
+        }
+
+        int kingRow;
+        if (player.getPlayerNum() == 1)
+            kingRow = 0;
+        else
+            kingRow = 7;
+
+        if (Arrays.equals(location, new int[] {4,kingRow})) {
+            if (board.getGrid().get(kingRow).get(0).getSymbol().toLowerCase().equals("r") &&
+            board.getGrid().get(kingRow).get(2).isEmpty() &&
+            board.getGrid().get(kingRow).get(3).isEmpty()) {
+                moves.add(new int[] {4,kingRow,2,kingRow});
+            }
+
+            if (board.getGrid().get(kingRow).get(7).getSymbol().toLowerCase().equals("r") &&
+                    board.getGrid().get(kingRow).get(5).isEmpty() &&
+                board.getGrid().get(kingRow).get(6).isEmpty()) {
+                moves.add(new int[] {4,kingRow,6,kingRow});
             }
         }
 

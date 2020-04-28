@@ -144,15 +144,47 @@ public class PieceTest {
 
         Assert.assertTrue(moves.isEmpty());
         Assert.assertTrue(cg.getBoard().getGrid().get(7).get(4).generateMoves().isEmpty());
-        cg.getP1().takeMove(new int[] {4,0,4,3});
+        cg.getP1().takeMove(new int[]{4, 0, 4, 3});
 
         Assert.assertEquals(8, cg.getBoard().getGrid().get(3).get(4).generateMoves().size());
-        cg.getP2().takeMove(new int[] {4,6,1,0});
+        cg.getP2().takeMove(new int[]{4, 6, 1, 0});
         Assert.assertEquals(1, cg.getBoard().getGrid().get(7).get(4).generateMoves().size());
 
-        cg.getP1().takeMove(new int[] {4,3,4,5});
-        cg.getP2().takeMove(new int[] {0,6,4,6});
+        cg.getP1().takeMove(new int[]{4, 3, 4, 5});
+        cg.getP2().takeMove(new int[]{0, 6, 4, 6});
         Assert.assertEquals(8, cg.getBoard().getGrid().get(5).get(4).generateMoves().size());
+    }
+
+    @Test
+    public void testKingCastlingGeneration() {
+        ChessGame cg = new ChessGame();
+        ArrayList<int[]> moves;
+        cg.getP2().takeMove(new int[] {1,7,0,4});
+        cg.getP2().takeMove(new int[] {2,7,0,4});
+        cg.getP2().takeMove(new int[] {3,7,0,4});
+        cg.getP2().takeMove(new int[] {5,7,0,4});
+        cg.getP2().takeMove(new int[] {6,7,0,4});
+        moves = cg.getBoard().getGrid().get(7).get(4).generateMoves();
+        Assert.assertArrayEquals(moves.get(2), new int[]{4, 7, 2, 7});
+        Assert.assertArrayEquals(moves.get(3), new int[]{4, 7, 6, 7});
+
+        cg.getP1().takeMove(new int[] {7,7,6,7});
+        moves = cg.getBoard().getGrid().get(7).get(4).generateMoves();
+        Assert.assertEquals(3, moves.size());
+
+        cg = new ChessGame();
+        cg.getP2().takeMove(new int[] {1,0,0,4});
+        cg.getP2().takeMove(new int[] {2,0,0,4});
+        cg.getP2().takeMove(new int[] {3,0,0,4});
+        cg.getP2().takeMove(new int[] {5,0,0,4});
+        cg.getP2().takeMove(new int[] {6,0,0,4});
+        moves = cg.getBoard().getGrid().get(0).get(4).generateMoves();
+        Assert.assertArrayEquals(moves.get(2), new int[]{4, 0, 2, 0});
+        Assert.assertArrayEquals(moves.get(3), new int[]{4, 0, 6, 0});
+
+        cg.getP1().takeMove(new int[] {4,0,3,0});
+        moves = cg.getBoard().getGrid().get(0).get(3).generateMoves();
+        Assert.assertEquals(2, moves.size());
 
     }
 
@@ -210,6 +242,14 @@ public class PieceTest {
 
         ArrayList<int[]> moves = cb.getGrid().get(0).get(0).generateMoves();
         Assert.assertTrue(moves.isEmpty());
+
+        cg.setTurn(cg.getP2());
+        cg.getP2().takeMove(new int[] {7,6,0,6});
+        ArrayList<int[]> actual = cg.getBoard().getGrid().get(7).get(7).generateMoves();
+        ArrayList<int[]> expected = new ArrayList<>();
+        for (int[] each : expected)
+            System.out.println(Arrays.toString(each));
+        Assert.assertEquals(6, actual.size());
     }
 
     @Test

@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class ChessPlayer extends AbstractPlayer {
     public ChessPlayer(int playerNum, String name) {
         super(playerNum, name);

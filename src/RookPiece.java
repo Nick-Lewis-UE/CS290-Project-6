@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class RookPiece extends AbstractPiece {
+public class RookPiece extends ChessLineMovePiece {
     public RookPiece(ChessBoard chessBoard, int[] ints, AbstractPlayer p1) {
         super("r", chessBoard, ints, p1);
         if (p1.playerNum == 1)

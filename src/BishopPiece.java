@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class BishopPiece extends AbstractPiece {
+public class BishopPiece extends ChessLineMovePiece {
     public BishopPiece(ChessBoard chessBoard, int[] ints, AbstractPlayer p1) {
         super("b", chessBoard, ints, p1);
         if (p1.playerNum == 1)

@@ -89,13 +89,13 @@ public class ChessBoard extends MovingBoard {
             for (int c = 0; c < (getGrid()).get(r).size(); c++) {
                 if (getGrid().get(r).get(c).getPlayer().getPlayerNum() == game.getTurn().getPlayerNum()) {
                     legalMoves.addAll(getGrid().get(r).get(c).generateMoves());
-
-                    for (int i=0; i < legalMoves.size(); i++) {
-                        if (moveToCheck(legalMoves.get(i))) {
-                            legalMoves.remove(i);
-                        }
-                    }
                 }
+            }
+        }
+
+        for (int i=0; i < legalMoves.size(); i++) {
+            if (moveToCheck(legalMoves.get(i))) {
+                legalMoves.remove(i);
             }
         }
 

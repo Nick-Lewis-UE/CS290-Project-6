@@ -1,6 +1,8 @@
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.ArrayList;
+
 public class PlayerTest {
     private void testPlayer(AbstractPlayer p, int playerNum,
                             String name, AbstractBoard board,
@@ -85,5 +87,17 @@ public class PlayerTest {
 
         Assert.assertFalse(p1.hasWon(new int[0]));
         Assert.assertTrue(p2.hasWon(new int[0]));
+    }
+
+    @Test
+    public void testChessHasWon() {
+        ChessGame cg = new ChessGame();
+        cg.getP1().takeMove(new int[] {3,0,4,6});
+        Assert.assertFalse(cg.getP1().hasWon(new int[] {4,6}));
+
+        cg.getP1().takeMove(new int[] {4,6,4,5});
+        System.out.println(cg.getBoard().toString());
+        cg.setTurn(cg.getP2());
+        Assert.assertTrue(cg.getP1().hasWon(new int[] {4,5}));
     }
 }

@@ -174,4 +174,11 @@ public class ChessBoardTest {
         Assert.assertFalse(cb.validMove(new int[] {4,5,3,5}));
         Assert.assertFalse(cb.validMove(new int[] {7,1,7,3}));
     }
+
+    @Test
+    public void testHasTie() {
+        ChessGame cg = new ChessGame();
+
+        Assert.assertFalse(cg.getBoard().hasTie());
+    }
 }

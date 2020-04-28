@@ -112,8 +112,9 @@ public class ChessBoard extends MovingBoard {
         }
 
         for (int[] each : legalMoves) {
-            if (each[2] == turnsKing[0] && each[3] == turnsKing[1])
+            if (each[2] == turnsKing[0] && each[3] == turnsKing[1]) {
                 return true;
+            }
         }
 
         return false;
@@ -149,6 +150,17 @@ public class ChessBoard extends MovingBoard {
 
     @Override
     public boolean hasTie() {
-        return false;
+        if (check())
+            return false;
+
+        for (ArrayList<AbstractPiece> eachRow : grid) {
+            for (AbstractPiece eachPiece : eachRow) {
+                if (eachPiece.getPlayer().getPlayerNum() == game.getTurn().getPlayerNum()) {
+                    if (!eachPiece.generateMoves().isEmpty())
+                        return false;
+                }
+            }
+        }
+        return true;
     }
 }

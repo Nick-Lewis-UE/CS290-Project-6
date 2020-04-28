@@ -86,7 +86,7 @@ public class ChessBoard extends MovingBoard {
         return false;
     }
 
-    private boolean check() {
+    public boolean check() {
         ArrayList<int[]> legalMoves = new ArrayList<>();
         AbstractPlayer otherPlayer;
         int[] turnsKing = new int[0];

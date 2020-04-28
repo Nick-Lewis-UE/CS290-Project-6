@@ -172,5 +172,6 @@ public class ChessBoardTest {
         cg.setTurn(cg.getP1());
         Assert.assertTrue(cb.validMove(new int[] {4,5,4,4}));
         Assert.assertFalse(cb.validMove(new int[] {4,5,3,5}));
+        Assert.assertFalse(cb.validMove(new int[] {7,1,7,3}));
     }
 }

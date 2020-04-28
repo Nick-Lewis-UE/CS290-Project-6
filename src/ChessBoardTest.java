@@ -37,38 +37,38 @@ public class ChessBoardTest {
         a.add(6, new ArrayList<>());
         a.add(7, new ArrayList<>());
 
-        a.get(0).add(0, new RookPiece("R", c1,
+        a.get(0).add(0, new RookPiece(c1,
                 new int[] {0,0}, cp1));
-        a.get(0).add(1, new KnightPiece("N", c1,
+        a.get(0).add(1, new KnightPiece(c1,
                 new int[] {1,0}, cp1));
-        a.get(0).add(2, new BishopPiece("B", c1,
+        a.get(0).add(2, new BishopPiece(c1,
                 new int[] {2,0}, cp1));
-        a.get(0).add(3, new QueenPiece("Q", c1,
+        a.get(0).add(3, new QueenPiece(c1,
                 new int[] {3,0}, cp1));
-        a.get(0).add(4, new KingPiece("K", c1,
+        a.get(0).add(4, new KingPiece(c1,
                 new int[] {4,0}, cp1));
-        a.get(0).add(5, new BishopPiece("B", c1,
+        a.get(0).add(5, new BishopPiece(c1,
                 new int[] {5,0}, cp1));
-        a.get(0).add(6, new KnightPiece("N", c1,
+        a.get(0).add(6, new KnightPiece(c1,
                 new int[] {6,0}, cp1));
-        a.get(0).add(7, new RookPiece("R", c1,
+        a.get(0).add(7, new RookPiece(c1,
                 new int[] {7,0}, cp1));
 
-        a.get(1).add(0, new PawnPiece("P", c1,
+        a.get(1).add(0, new PawnPiece(c1,
                 new int[] {0,1}, cp1));
-        a.get(1).add(1, new PawnPiece("P", c1,
+        a.get(1).add(1, new PawnPiece(c1,
                 new int[] {1,1}, cp1));
-        a.get(1).add(2, new PawnPiece("P", c1,
+        a.get(1).add(2, new PawnPiece(c1,
                 new int[] {2,1}, cp1));
-        a.get(1).add(3, new PawnPiece("P", c1,
+        a.get(1).add(3, new PawnPiece(c1,
                 new int[] {3,1}, cp1));
-        a.get(1).add(4, new PawnPiece("P", c1,
+        a.get(1).add(4, new PawnPiece(c1,
                 new int[] {4,1}, cp1));
-        a.get(1).add(5, new PawnPiece("P", c1,
+        a.get(1).add(5, new PawnPiece(c1,
                 new int[] {5,1}, cp1));
-        a.get(1).add(6, new PawnPiece("P", c1,
+        a.get(1).add(6, new PawnPiece(c1,
                 new int[] {6,1}, cp1));
-        a.get(1).add(7, new PawnPiece("P", c1,
+        a.get(1).add(7, new PawnPiece(c1,
                 new int[] {7,1}, cp1));
 
         a.get(2).add(0, new NullPiece());
@@ -107,39 +107,39 @@ public class ChessBoardTest {
         a.get(5).add(6, new NullPiece());
         a.get(5).add(7, new NullPiece());
 
-        a.get(6).add(0, new PawnPiece("p", c1,
+        a.get(6).add(0, new PawnPiece(c1,
                 new int[] {0,6}, cp2));
-        a.get(6).add(1, new PawnPiece("p", c1,
+        a.get(6).add(1, new PawnPiece(c1,
                 new int[] {1,6}, cp2));
-        a.get(6).add(2, new PawnPiece("p", c1,
+        a.get(6).add(2, new PawnPiece(c1,
                 new int[] {2,6}, cp2));
-        a.get(6).add(3, new PawnPiece("p", c1,
+        a.get(6).add(3, new PawnPiece(c1,
                 new int[] {3,6}, cp2));
-        a.get(6).add(4, new PawnPiece("p", c1,
+        a.get(6).add(4, new PawnPiece(c1,
                 new int[] {4,6}, cp2));
-        a.get(6).add(5, new PawnPiece("p", c1,
+        a.get(6).add(5, new PawnPiece(c1,
                 new int[] {5,6}, cp2));
-        a.get(6).add(6, new PawnPiece("p", c1,
+        a.get(6).add(6, new PawnPiece(c1,
                 new int[] {6,6}, cp2));
-        a.get(6).add(7, new PawnPiece("p", c1,
+        a.get(6).add(7, new PawnPiece(c1,
                 new int[] {7,6}, cp2));
 
-        a.get(7).add(0, new RookPiece("r", c1,
-                new int[] {0,7}, cp1));
-        a.get(7).add(1, new KnightPiece("n", c1,
-                new int[] {1,7}, cp1));
-        a.get(7).add(2, new BishopPiece("b", c1,
-                new int[] {2,7}, cp1));
-        a.get(7).add(3, new QueenPiece("q", c1,
-                new int[] {3,7}, cp1));
-        a.get(7).add(4, new KingPiece("k", c1,
-                new int[] {4,7}, cp1));
-        a.get(7).add(5, new BishopPiece("b", c1,
-                new int[] {5,7}, cp1));
-        a.get(7).add(6, new KnightPiece("n", c1,
-                new int[] {6,7}, cp1));
-        a.get(7).add(7, new RookPiece("r", c1,
-                new int[] {7,7}, cp1));
+        a.get(7).add(0, new RookPiece(c1,
+                new int[] {0,7}, cp2));
+        a.get(7).add(1, new KnightPiece(c1,
+                new int[] {1,7}, cp2));
+        a.get(7).add(2, new BishopPiece(c1,
+                new int[] {2,7}, cp2));
+        a.get(7).add(3, new QueenPiece(c1,
+                new int[] {3,7}, cp2));
+        a.get(7).add(4, new KingPiece(c1,
+                new int[] {4,7}, cp2));
+        a.get(7).add(5, new BishopPiece(c1,
+                new int[] {5,7}, cp2));
+        a.get(7).add(6, new KnightPiece(c1,
+                new int[] {6,7}, cp2));
+        a.get(7).add(7, new RookPiece(c1,
+                new int[] {7,7}, cp2));
 
         BoardTest.testBoard(c1, a);
     }
@@ -180,15 +180,5 @@ public class ChessBoardTest {
         ChessGame cg = new ChessGame();
 
         Assert.assertFalse(cg.getBoard().hasTie());
-    }
-
-    @Test
-    public void pawnPromotion() {
-        ChessGame cg = new ChessGame();
-        System.out.println(cg.getBoard().toString());
-        cg.setTurn(cg.getP2());
-        cg.getP2().takeMove(new int[] {4,6,4,0});
-        System.out.println(cg.getBoard().toString());
-
     }
 }

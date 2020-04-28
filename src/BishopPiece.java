@@ -1,8 +1,10 @@
 import java.util.ArrayList;
 
 public class BishopPiece extends AbstractPiece {
-    public BishopPiece(String b, ChessBoard chessBoard, int[] ints, AbstractPlayer p1) {
-        super(b, chessBoard, ints, p1);
+    public BishopPiece(ChessBoard chessBoard, int[] ints, AbstractPlayer p1) {
+        super("b", chessBoard, ints, p1);
+        if (p1.playerNum == 1)
+            symbol = "B";
     }
 
     protected int[] rowAdds = new int[] {1,1,-1,-1};

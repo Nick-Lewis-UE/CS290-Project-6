@@ -38,17 +38,17 @@ public class ChessMoveStrategy implements moveStrategy {
         System.out.println("Got Here");
         switch(choice) {
             case "Q":
-                p.getBoard().getGrid().get(loc[1]).set(loc[0], new QueenPiece("q", p.getBoard(), loc, p));
+                p.getBoard().getGrid().get(loc[1]).set(loc[0], new QueenPiece(p.getBoard(), loc, p));
                 System.out.println("Queen");
                 break;
             case "B":
-                p.getBoard().getGrid().get(loc[1]).set(loc[0], new BishopPiece("b", (ChessBoard) p.getBoard(), loc, p));
+                p.getBoard().getGrid().get(loc[1]).set(loc[0], new BishopPiece((ChessBoard) p.getBoard(), loc, p));
                 break;
             case "N":
-                p.getBoard().getGrid().get(loc[1]).set(loc[0], new KnightPiece("n", (ChessBoard) p.getBoard(), loc, p));
+                p.getBoard().getGrid().get(loc[1]).set(loc[0], new KnightPiece((ChessBoard) p.getBoard(), loc, p));
                 break;
             case "R":
-                p.getBoard().getGrid().get(loc[1]).set(loc[0], new RookPiece("r", (ChessBoard) p.getBoard(), loc, p));
+                p.getBoard().getGrid().get(loc[1]).set(loc[0], new RookPiece((ChessBoard) p.getBoard(), loc, p));
                 break;
             default: break;
         }

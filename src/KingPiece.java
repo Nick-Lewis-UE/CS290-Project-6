@@ -2,8 +2,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class KingPiece extends AbstractPiece {
-    public KingPiece(String k, ChessBoard chessBoard, int[] ints, AbstractPlayer p1) {
-        super(k, chessBoard, ints, p1);
+    public KingPiece(ChessBoard chessBoard, int[] ints, AbstractPlayer p1) {
+        super("k", chessBoard, ints, p1);
+        if (p1.getPlayerNum() == 1)
+            symbol = "K";
     }
 
     protected int[] rowAdds = new int[] {1,1,1,0,-1,-1,-1,0};

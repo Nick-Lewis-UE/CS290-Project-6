@@ -1,8 +1,10 @@
 import java.util.ArrayList;
 
 public class KnightPiece extends AbstractPiece {
-    public KnightPiece(String n, ChessBoard chessBoard, int[] ints, AbstractPlayer p1) {
-        super(n, chessBoard, ints, p1);
+    public KnightPiece(ChessBoard chessBoard, int[] ints, AbstractPlayer p1) {
+        super("n", chessBoard, ints, p1);
+        if (p1.playerNum == 1)
+            symbol = "N";
     }
 
     protected int[] rowAdds = new int[] {1,2,2,1,-1,-2,-2,-1};

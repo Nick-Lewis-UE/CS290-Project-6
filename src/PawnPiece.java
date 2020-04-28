@@ -1,8 +1,10 @@
 import java.util.ArrayList;
 
 public class PawnPiece extends AbstractPiece {
-    public PawnPiece(String p, ChessBoard chessBoard, int[] ints, AbstractPlayer p1) {
-        super(p, chessBoard, ints, p1);
+    public PawnPiece(ChessBoard chessBoard, int[] ints, AbstractPlayer p1) {
+        super("p", chessBoard, ints, p1);
+        if (p1.playerNum == 1)
+            symbol = "P";
     }
 
     public ArrayList<int[]> generateMoves() {

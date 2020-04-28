@@ -147,7 +147,7 @@ public class PieceTest {
         cg.getP1().takeMove(new int[]{4, 0, 4, 3});
 
         Assert.assertEquals(8, cg.getBoard().getGrid().get(3).get(4).generateMoves().size());
-        cg.getP2().takeMove(new int[]{4, 6, 1, 0});
+        cg.getP2().takeMove(new int[]{4, 6, 1, 1});
         Assert.assertEquals(1, cg.getBoard().getGrid().get(7).get(4).generateMoves().size());
 
         cg.getP1().takeMove(new int[]{4, 3, 4, 5});

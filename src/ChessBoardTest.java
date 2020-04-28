@@ -181,4 +181,14 @@ public class ChessBoardTest {
 
         Assert.assertFalse(cg.getBoard().hasTie());
     }
+
+    @Test
+    public void pawnPromotion() {
+        ChessGame cg = new ChessGame();
+        System.out.println(cg.getBoard().toString());
+        cg.setTurn(cg.getP2());
+        cg.getP2().takeMove(new int[] {4,6,4,0});
+        System.out.println(cg.getBoard().toString());
+
+    }
 }

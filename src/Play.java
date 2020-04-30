@@ -19,17 +19,18 @@ public class Play {
         System.out.println("Type 4 for Chess");
         String pick = scan.nextLine();
 
-        if (pick.equals("1")) {
-            return new Connect4Game();
-        } else if (pick.equals("2")) {
-            return new GomokuGame();
-        } else if (pick.equals("3")) {
-            return new CheckersGame();
-        } else if (pick.equals("4")) {
-            return new ChessGame();
-        } else {
-            System.out.println("Invalid input, try again please.");
-            return startup(scan);
+        switch (pick) {
+            case "1":
+                return new Connect4Game();
+            case "2":
+                return new GomokuGame();
+            case "3":
+                return new CheckersGame();
+            case "4":
+                return new ChessGame();
+            default:
+                System.out.println("Invalid input, try again please.");
+                return startup(scan);
         }
     }
 }

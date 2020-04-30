@@ -88,9 +88,6 @@ public class ChessMoveStrategy implements moveStrategy {
         boolean notNormalMove =  abs(move[2] - move[0]) > 1;
 
 
-        if (isKing && notNormalMove)
-            return true;
-        else
-            return false;
+        return isKing && notNormalMove;
     }
 }

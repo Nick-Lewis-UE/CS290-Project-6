@@ -263,10 +263,10 @@ public class CheckersBoardTest extends BoardTest {
 
         ArrayList<int[]> legalMoves = new ArrayList<>();
         ArrayList<ArrayList<AbstractPiece>> b = c1.makeStartBoard(cg);
-        for (int r = 0; r <(b).size(); r++) {
-            for (int c = 0; c <(b).get(r).size(); c++) {
-                if (b.get(r).get(c).getPlayer().getPlayerNum() == p1.getPlayerNum()) {
-                    legalMoves.addAll(b.get(r).get(c).generateMoves());
+        for (ArrayList<AbstractPiece> abstractPieces : b) {
+            for (AbstractPiece abstractPiece : abstractPieces) {
+                if (abstractPiece.getPlayer().getPlayerNum() == p1.getPlayerNum()) {
+                    legalMoves.addAll(abstractPiece.generateMoves());
                 }
             }
         }
@@ -296,9 +296,6 @@ public class CheckersBoardTest extends BoardTest {
         b.get(5).set(6, new NullPiece(c1, new int[] {6,5}));
         b.get(4).set(5, new CheckersPiece("o", c1,
                 new int[] {5,4}, p2));
-
-        CheckersBoard c100 = (CheckersBoard) cg.getBoard();
-        ArrayList<int[]> a3 = c100.findLegalMoves(p1);
 
         ArrayList<int[]> legalMoves2 = new ArrayList<>();
         legalMoves2.add(new int[] {2,3,4,5});

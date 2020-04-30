@@ -50,10 +50,8 @@ public class PieceTest {
     @Test
     public void testSimpleMoves() {
         CheckersGame cg = new CheckersGame();
-        CheckersBoard c1 = new CheckersBoard(cg);
         CheckersPiece p1 = (CheckersPiece) cg.getBoard().getGrid().get(2).get(1);
         CheckersPiece p2 = (CheckersPiece) cg.getBoard().getGrid().get(0).get(7);
-        CheckersMoveStrategy cs = new CheckersMoveStrategy(cg.getP2());
 
         Assert.assertFalse(p1.findSimpleMoves().isEmpty());
 
@@ -270,7 +268,7 @@ public class PieceTest {
         ArrayList<int[]> a2 = cg.getBoard().getGrid().get(7).get(3).generateMoves();
 
         Assert.assertTrue(Arrays.equals(a2.get(0), new int[] {3,7,3,6}));
-        Assert.assertTrue(Arrays.equals(a2.get(5), new int[] {3,7,3,1}));
+        Assert.assertArrayEquals(a2.get(5), new int[]{3, 7, 3, 1});
     }
 
     @Test

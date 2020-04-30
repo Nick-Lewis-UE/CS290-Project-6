@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class NullPiece extends AbstractPiece {
     public NullPiece(AbstractBoard board, int[] location) {
         super(" ", board, location, new NullPlayer(board));
@@ -16,5 +18,10 @@ public class NullPiece extends AbstractPiece {
 
     public boolean isEmpty() {
         return true;
+    }
+
+    @Override
+    public ArrayList<int[]> generateMoves() {
+        return null;
     }
 }

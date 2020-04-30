@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class ChessLineMovePiece extends AbstractPiece {
+public abstract class ChessLineMovePiece extends AbstractPiece {
     public ChessLineMovePiece(String symbol, AbstractBoard board,
                               int[] location, AbstractPlayer p) {
         super(symbol, board, location, p);

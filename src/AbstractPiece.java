@@ -14,9 +14,6 @@ public abstract class AbstractPiece {
     protected AbstractBoard board;
     protected AbstractPlayer player;
 
-    public AbstractPiece() {
-    }
-
     public String getSymbol() {
         return symbol;
     }
@@ -49,9 +46,7 @@ public abstract class AbstractPiece {
         return board;
     }
 
-    public ArrayList<int[]> generateMoves() {
-        return null;
-    }
+    public abstract ArrayList<int[]> generateMoves();
 
     protected boolean inBounds(int col, int row) {
         return col < board.getNum_col() &&
